@@ -2,23 +2,23 @@
 <html lang="en">
   <head>
     <meta meta charset="utf-8" />
-    <title>Testing</title>
+    <title>Login</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Fruktur:ital@0;1&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
   </head>
   <body>
     <header>
       <div class="logo">
-        <a href="/index.html"><img src="Images/Logo.svg" /></a>
+        <a href="/index.html"><img src="/Images/Logo.svg" /></a>
       </div>
       <ul class="navbar">
         <li><a href="">Products</a></li>
-        <li><a href="/Login/index.html">Login</a></li>
+        <li><a href="/Login/index.html" class="active">Login</a></li>
         <li><a href="/Register/index.html">Register</a></li>
         <li>
           <a>
@@ -37,14 +37,37 @@
           </a>
         </li>
       </ul>
+      <div class="cart">
+        <h2>Cart</h2>
+        <button>Checkout</button>
+      </div>
+      <div class="profile">
+        <h2>Profile</h2>
+        <ul>
+          <li><a href="">Profile</a></li>
+          <li><a href="">Your orders</a></li>
+          <li><a href="">Wishlist</a></li>
+          <li><a href="">Settings</a></li>
+        </ul>
+        <button>Logout</button>
+      </div>
     </header>
     <main>
-      <div class="carousel-wrapper">
-        <div class="carousel" id="carousel"></div>
-      </div>
-      <div class="new-products">
-        <h1>New arrivals</h1>
-        <div class="product-cards" id="product-cards"></div>
+      <div class="form-container">
+        <div class="form-slides" id="form-slides"></div>
+        <div class="form">
+          <h1>Login</h1>
+          <label>Username</label>
+          <input type="text" id="username" />
+          <label>Password</label>
+          <input type="password" id="password" />
+          <button id="login-button">Login</button>
+          <div class="login-bottom-txt">
+            <a href="">Forgot password?</a>
+            <p>/</p>
+            <a href="/Register/index.html">Register</a>
+          </div>
+        </div>
       </div>
     </main>
     <footer>
@@ -73,5 +96,5 @@
       </div>
     </footer>
   </body>
-  <script src="javascript/front-page.js" type="module"></script>
+  <script src="/javascript/login.js"></script>
 </html>

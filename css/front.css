@@ -1,0 +1,173 @@
+.carousel-wrapper {
+  overflow: hidden;
+  height: 65vh;
+  margin: 32px;
+  margin-top: 0px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+  background: linear-gradient(
+    180deg,
+    var(--light-green) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.carousel {
+  width: 300%;
+  height: 100%;
+  display: flex;
+}
+
+.carousel-slide {
+  width: 100%;
+  height: 100%;
+  padding: 128px;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.carousel-text {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  z-index: 1;
+}
+
+.carousel-image-container {
+  width: 40vw;
+  filter: drop-shadow(200px -100px 0px #255eed);
+  right: 0;
+  z-index: 0;
+  align-self: center;
+}
+
+.carousel-slide img {
+  width: 700px;
+  animation-name: carouselAnimation;
+  animation-duration: 20s;
+  animation-iteration-count: infinite;
+  animation-timing-function: steps(25);
+}
+
+.new-products {
+  height: 500px;
+  overflow-x: hidden;
+}
+
+.product-cards {
+  display: flex;
+  width: max-content;
+  gap: 32px;
+  justify-content: center;
+  margin: auto;
+  padding: 32px;
+  animation-name: productScroll;
+  animation-duration: 60s;
+  animation-timing-function: linear;
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+  background-color: var(--light-green);
+}
+
+.product-card {
+  background-color: var(--light-green);
+  border-style: solid;
+  border-width: 1px;
+  border-color: var(--black);
+}
+
+.product-card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.price {
+  font-size: 20px;
+}
+
+.discounted-price {
+  font-size: 20px;
+  color: red;
+  display: none;
+}
+
+@keyframes carouselAnimation {
+  0% {
+    clip-path: polygon(
+      41% 3%,
+      86% 8%,
+      100% 44%,
+      95% 83%,
+      70% 100%,
+      16% 98%,
+      0% 70%,
+      8% 25%
+    );
+  }
+
+  25% {
+    clip-path: polygon(
+      95% 80%,
+      61% 93%,
+      33% 100%,
+      4% 71%,
+      14% 39%,
+      22% 8%,
+      71% 0,
+      100% 37%
+    );
+  }
+
+  50% {
+    clip-path: polygon(
+      41% 3%,
+      86% 8%,
+      100% 44%,
+      95% 83%,
+      70% 100%,
+      16% 98%,
+      0% 70%,
+      8% 25%
+    );
+  }
+
+  75% {
+    clip-path: polygon(
+      95% 80%,
+      61% 93%,
+      33% 100%,
+      4% 71%,
+      14% 39%,
+      22% 8%,
+      71% 0,
+      100% 37%
+    );
+  }
+
+  100% {
+    clip-path: polygon(
+      41% 3%,
+      86% 8%,
+      100% 44%,
+      95% 83%,
+      70% 100%,
+      16% 98%,
+      0% 70%,
+      8% 25%
+    );
+  }
+}
+
+@keyframes productScroll {
+  0% {
+    transform: translateX(0vw);
+  }
+
+  100% {
+    transform: translateX(-190vw);
+  }
+}

@@ -1,0 +1,28 @@
+footer {
+  display: flex;
+  padding: 32px;
+  padding-left: 64px;
+  padding-top: 128px;
+  gap: 64px;
+}
+
+.footer-links ul {
+  font-family: var(--base-font);
+  font-weight: 800;
+  color: var(--blue);
+  list-style: none;
+}
+
+.footer-links a {
+  text-decoration: none;
+  transition: 0.2s;
+  font-size: 20px;
+}
+
+.footer-links a:visited {
+  color: var(--blue);
+}
+
+.footer-links a:hover {
+  font-size: 25px;
+}
