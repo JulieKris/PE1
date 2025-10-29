@@ -1,3 +1,5 @@
+var number = 1;
+
 export function displayCarouselItmes(products) {
   products.forEach((product) => {
     const carouselSlide = document.createElement("div");
@@ -9,6 +11,7 @@ export function displayCarouselItmes(products) {
     const carouselImg = document.createElement("img");
 
     carouselSlide.className = "carousel-slide";
+    carouselSlide.id = "indexEvent-" + number++;
     carouselText.className = "carousel-text";
     carouselImgContainer.className = "carousel-image-container";
 

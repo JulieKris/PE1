@@ -1,0 +1,33 @@
+.checkout {
+  display: flex;
+  gap: 64px;
+  margin: auto;
+  width: min-content;
+}
+
+.checkout .form-container {
+  margin: 0;
+}
+
+.checkout .form h2 {
+  margin-top: 64px;
+}
+
+.checkout-cart {
+  width: 700px;
+  padding: 32px;
+  background-color: var(--light-green);
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  height: min-content;
+}
+
+.cart-product-title {
+  width: 200px;
+  background-color: aqua;
+}
+
+.checkout input {
+  width: 400px;
+}

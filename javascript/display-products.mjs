@@ -9,8 +9,8 @@ export function displayProducts(products) {
 
     productImg.setAttribute("src", product.image.url);
     productTitle.textContent = product.title;
-    productPrice.textContent = product.price + " NOK";
-    productDiscountedPrice.textContent = product.discountedPrice + " NOK";
+    productPrice.textContent = product.price + " kr";
+    productDiscountedPrice.textContent = product.discountedPrice + " kr";
     anchor.href = `/product/index.html?id=${product.id}`;
 
     productCard.className = "product-card";

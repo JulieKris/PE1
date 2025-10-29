@@ -41,17 +41,124 @@ header {
   color: var(--blue);
 }
 
-.cart {
+.cart-icon {
+  position: relative;
+}
+
+.cart-count {
+  width: 13px;
+  border-radius: 50%;
+  font-size: 10px;
+  color: white;
+  text-align: center;
+  background-color: var(--blue);
   position: absolute;
-  background-color: var(--light-green);
-  width: 400px;
+  top: -10px;
   right: 0;
-  top: 100px;
+}
+
+.cart-container {
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 0px;
+  right: 0px;
+  top: 0px;
+  transition: 0.5s;
+  z-index: 1;
+  height: 100vh;
+}
+
+.cart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  background-color: var(--light-green);
   padding: 32px;
-  height: min-content;
+  border-left: 1px solid black;
+  height: 100%;
+}
+
+.cart-top {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-top h2 {
+  font-size: 32px;
+}
+
+.cart-close {
+  width: 50px;
+  height: 50px;
+  background-color: red;
+}
+
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+}
+
+.cart-product {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 16px;
+  gap: 32px;
   border-style: solid;
   border-width: 1px;
   border-color: black;
+  background-color: white;
+}
+
+.cart-product img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+}
+
+.cart-price-container .price {
+  font-size: 16px;
+}
+
+.cart-price-container .discounted-price {
+  font-size: 16px;
+}
+
+.product-count-container {
+  display: flex;
+}
+
+.increase-product-count,
+.product-count,
+.decrease-product-count {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+}
+
+.increase-product-count,
+.decrease-product-count {
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+  background-color: var(--light-green);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.increase-product-count:hover,
+.decrease-product-count:hover {
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+  background-color: var(--blue);
+  cursor: pointer;
 }
 
 .profile {
@@ -64,5 +171,5 @@ header {
   border-style: solid;
   border-width: 1px;
   border-color: black;
-  display: block;
+  display: none;
 }

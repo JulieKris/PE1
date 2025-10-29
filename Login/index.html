@@ -21,7 +21,7 @@
         <li><a href="/Login/index.html" class="active">Login</a></li>
         <li><a href="/Register/index.html">Register</a></li>
         <li>
-          <a>
+          <a class="cart-icon" id="cart-icon">
             <svg
               width="33"
               height="30"
@@ -34,12 +34,19 @@
                 fill="black"
               />
             </svg>
+            <div class="cart-count" id="cart-count">0</div>
           </a>
         </li>
       </ul>
-      <div class="cart">
-        <h2>Cart</h2>
-        <button>Checkout</button>
+      <div class="cart-container">
+        <div class="cart">
+          <div class="cart-top">
+            <h2>Cart</h2>
+            <div class="cart-close" id="cart-close"></div>
+          </div>
+          <div class="cart-items"></div>
+          <a href="/Checkout/index.html"><button>Checkout</button></a>
+        </div>
       </div>
       <div class="profile">
         <h2>Profile</h2>
@@ -96,5 +103,5 @@
       </div>
     </footer>
   </body>
-  <script src="/javascript/login.js"></script>
+  <script src="/javascript/login.js" type="module"></script>
 </html>

@@ -4,6 +4,7 @@
 @import url("front.css");
 @import url("product.css");
 @import url("forms.css");
+@import url("checkout.css");
 
 * {
   padding: 0;

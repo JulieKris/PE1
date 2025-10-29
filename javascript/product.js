@@ -1,4 +1,6 @@
 import { displayProducts } from "./display-products.mjs";
+import { cartFunctions } from "./header.mjs";
+import { displayCartItems } from "./display-cart-items.mjs";
 
 let image;
 let title;
@@ -7,9 +9,24 @@ let price;
 let discountedPrice;
 let rating;
 let reviews;
+let id;
 
 let allProducts = [];
-let otherProducts = [];
+let randomProducts = [];
+
+let cartItems = JSON.parse(localStorage.getItem("cart"));
+
+const ids = cartItems.map(({ id }) => id);
+let noDuplicateItems = cartItems.filter(
+  ({ id }, index) => !ids.includes(id, index + 1)
+);
+
+console.log(noDuplicateItems);
+console.log(cartItems);
+
+if (localStorage.getItem("cart") == null) {
+  localStorage.setItem("cart", "[]");
+}
 
 const apiUrl = "https://v2.api.noroff.dev/online-shop";
 
@@ -21,7 +38,7 @@ async function fetchProduct() {
     allProducts = data.data;
 
     const params = new URLSearchParams(window.location.search);
-    const id = params.get("id");
+    id = params.get("id");
     const productResponse = await fetch(`${apiUrl}/${id}`);
     const productData = await productResponse.json();
 
@@ -35,6 +52,11 @@ async function fetchProduct() {
 
     renderProductInfo();
     displayProducts(allProducts);
+    addToCart();
+
+    document.querySelector("#cart-count").innerText = JSON.parse(
+      localStorage.getItem("cart")
+    ).length;
   } catch (error) {
     console.error("Error fetching product:", error);
   }
@@ -91,10 +113,13 @@ function renderProductInfo() {
   productDiscountedPrice.innerText = discountedPrice + " kr";
   priceContainer.appendChild(productDiscountedPrice);
 
+  /*Display discounted price*/
   if (productPrice.innerText !== productDiscountedPrice.innerText) {
     productDiscountedPrice.style.display = "block";
     productPrice.style.textDecoration = "line-through";
   }
+
+  console.log(productPrice.innerText);
 
   /*Container for the add to cart and wishlist buttons*/
   const buttonContainer = document.createElement("div");
@@ -103,6 +128,7 @@ function renderProductInfo() {
 
   /*Add to cart button*/
   const addToCartButton = document.createElement("button");
+  addToCartButton.id = "add-to-cart";
   addToCartButton.innerText = "Add to cart";
   buttonContainer.appendChild(addToCartButton);
 
@@ -160,6 +186,11 @@ function renderProductInfo() {
   noReviewsMessage.innerText = "There are no user reviews for this product.";
   reviewsContainer.appendChild(noReviewsMessage);
 
+  /*If there are no reviews display message*/
+  if (reviews.length === 0) {
+    noReviewsMessage.style.display = "block";
+  }
+
   /*Rendering individual reviews*/
   reviews.forEach((review) => {
     let starRating = review.rating * 10 * 2;
@@ -188,3 +219,37 @@ function renderProductInfo() {
 }
 
 fetchProduct();
+cartFunctions();
+displayCartItems(noDuplicateItems);
+
+/*Add product to cart*/
+function addToCart() {
+  document
+    .querySelector("#add-to-cart")
+    .addEventListener("click", function addToCart() {
+      if (localStorage.getItem("cart") !== null) {
+      } else {
+        localStorage.setItem("cart", "[]");
+      }
+
+      let item = {
+        image: image,
+        title: title,
+        price: price,
+        discountedPrice: discountedPrice,
+        id: id,
+      };
+
+      let updatedCart = JSON.parse(localStorage.getItem("cart"));
+      updatedCart.push(item);
+
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+
+      document.querySelector("#cart-count").innerText = JSON.parse(
+        localStorage.getItem("cart")
+      ).length;
+
+      document.getElementById("cart-items").innerHTML = "";
+      displayCartItems(noDuplicateItems);
+    });
+}

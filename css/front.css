@@ -1,5 +1,7 @@
-.carousel-wrapper {
-  overflow: hidden;
+.carousel {
+  height: 65vh;
+  display: flex;
+  overflow: auto;
   height: 65vh;
   margin: 32px;
   margin-top: 0px;
@@ -11,27 +13,58 @@
     var(--light-green) 0%,
     rgba(255, 255, 255, 0) 100%
   );
+  scroll-behavior: smooth;
+  position: relative;
+  anchor-name: --carousel;
+  scroll-snap-type: x mandatory;
+  scroll-marker-group: after;
 }
 
-.carousel {
-  width: 300%;
-  height: 100%;
+.carousel::scroll-marker-group {
   display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.carousel-slide::scroll-marker {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-style: solid;
+  border-width: 3px;
+  border-color: var(--blue);
+  border-radius: 50%;
+  transition: 0.2s;
+  position-anchor: --carousel;
+  position-area: center bottom;
+  transform: translateY(-82px);
+}
+
+.carousel-slide::scroll-marker:hover {
+  background-color: var(--blue);
+}
+
+.carousel-slide::scroll-marker:target-current {
+  background-color: var(--blue);
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
 }
 
 .carousel-slide {
-  width: 100%;
+  flex: 0 0 100%;
   height: 100%;
   padding: 128px;
   display: flex;
   justify-content: space-between;
   overflow: hidden;
+  scroll-snap-align: start;
 }
 
 .carousel-text {
   display: flex;
   flex-direction: column;
-  width: 300px;
   z-index: 1;
 }
 
@@ -52,24 +85,16 @@
 }
 
 .new-products {
-  height: 500px;
-  overflow-x: hidden;
+  width: 100%;
 }
 
 .product-cards {
   display: flex;
-  width: max-content;
+  flex-wrap: wrap;
   gap: 32px;
-  justify-content: center;
   margin: auto;
-  padding: 32px;
-  animation-name: productScroll;
-  animation-duration: 60s;
-  animation-timing-function: linear;
-  border-style: solid;
-  border-width: 1px;
-  border-color: black;
-  background-color: var(--light-green);
+  margin-top: 16px;
+  width: 100%;
 }
 
 .product-card {
@@ -81,7 +106,6 @@
 
 .product-card img {
   width: 100%;
-  height: 300px;
   object-fit: cover;
 }
 
@@ -114,8 +138,8 @@
       95% 80%,
       61% 93%,
       33% 100%,
-      4% 71%,
-      14% 39%,
+      10% 71%,
+      8% 39%,
       22% 8%,
       71% 0,
       100% 37%
@@ -140,8 +164,8 @@
       95% 80%,
       61% 93%,
       33% 100%,
-      4% 71%,
-      14% 39%,
+      10% 71%,
+      8% 39%,
       22% 8%,
       71% 0,
       100% 37%
@@ -159,15 +183,5 @@
       0% 70%,
       8% 25%
     );
-  }
-}
-
-@keyframes productScroll {
-  0% {
-    transform: translateX(0vw);
-  }
-
-  100% {
-    transform: translateX(-190vw);
   }
 }

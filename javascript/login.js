@@ -1,3 +1,5 @@
+import { cartFunctions } from "./header.mjs";
+
 const apiUrl = "https://v2.api.noroff.dev/online-shop";
 
 let allProducts = [];
@@ -31,3 +33,6 @@ function createSlides(products) {
     document.querySelector("#form-slides").appendChild(slideImage);
   });
 }
+
+cartFunctions();
+displayCartItems();
