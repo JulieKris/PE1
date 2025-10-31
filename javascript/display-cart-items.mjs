@@ -9,19 +9,35 @@ const noDuplicateItems = cartItems.filter(
   ({ id }, index) => !ids.includes(id, index + 1)
 );
 
-export function displayCartItems(Items) {
-  Items.forEach((item) => {
+export function displayCartItems(products) {
+  if (localStorage.getItem("cart") == "[]") {
+    const emptyCartMessage = document.createElement("p");
+    emptyCartMessage.innerText = "There are currently no items in your cart.";
+    emptyCartMessage.className = "empty-cart";
+
+    if (window.location.href.includes("Checkout")) {
+      document
+        .querySelector("#checkout-cart-items")
+        .appendChild(emptyCartMessage);
+    } else {
+      document.querySelector("#cart-items").appendChild(emptyCartMessage);
+    }
+    console.log("huh");
+  } else {
+  }
+
+  products.forEach((product) => {
     const cartProduct = document.createElement("div");
     const cartProductImg = document.createElement("img");
     const cartProductTitle = document.createElement("p");
     const cartPriceContainer = document.createElement("div");
     const cartProductPrice = document.createElement("p");
     const cartProductDiscPrice = document.createElement("p");
-    const productTotalPrice = document.createElement("p");
     const productCountContainer = document.createElement("div");
     const increaseProductCount = document.createElement("div");
     const productCount = document.createElement("div");
     const decreaseProductCount = document.createElement("div");
+    const removeProductButton = document.createElement("div");
 
     cartProduct.className = "cart-product";
     cartProductTitle.className = "cart-product-title";
@@ -32,67 +48,96 @@ export function displayCartItems(Items) {
     increaseProductCount.className = "increase-product-count";
     increaseProductCount.id = "increase-product-count";
     productCount.className = "product-count";
+    productCount.id = "product-count";
     decreaseProductCount.className = "decrease-product-count";
     decreaseProductCount.id = "decrease-product-count";
+    removeProductButton.className = "remove-product";
+    removeProductButton.id = "remove-product";
 
-    cartProductImg.setAttribute("src", item.image);
-    cartProductTitle.innerText = item.title;
-    cartProductPrice.innerText = item.price + " kr";
-    cartProductDiscPrice.innerText = item.discountedPrice + " kr";
+    cartProductImg.setAttribute("src", product.image);
+    cartProductTitle.innerText = product.title;
+    cartProductPrice.innerText = product.price + " kr";
+    cartProductDiscPrice.innerText = product.discountedPrice + " kr";
     increaseProductCount.innerText = "+";
-    productCount.innerText = "0";
+    productCount.innerText = "1";
     decreaseProductCount.innerText = "-";
+    removeProductButton.innerText = "X";
 
-    document.querySelector("#cart-items").appendChild(cartProduct);
     if (window.location.href.includes("Checkout")) {
       document.querySelector("#checkout-cart-items").appendChild(cartProduct);
+    } else {
+      document.querySelector("#cart-items").appendChild(cartProduct);
     }
+
     cartProduct.appendChild(cartProductImg);
     cartProduct.appendChild(cartProductTitle);
     cartProduct.appendChild(cartPriceContainer);
     cartPriceContainer.appendChild(cartProductPrice);
     cartPriceContainer.appendChild(cartProductDiscPrice);
-    cartProduct.appendChild(productTotalPrice);
     cartProduct.appendChild(productCountContainer);
     productCountContainer.appendChild(decreaseProductCount);
     productCountContainer.appendChild(productCount);
     productCountContainer.appendChild(increaseProductCount);
+    cartProduct.appendChild(removeProductButton);
 
     if (cartProductPrice.innerText !== cartProductDiscPrice.innerText) {
       cartProductDiscPrice.style.display = "block";
       cartProductPrice.style.textDecoration = "line-through";
     }
 
-    document
-      .querySelector("#increase-product-count")
-      .addEventListener("click", function something() {
-        let productCount = document.querySelector("");
-      });
+    console.log(cartItems.length);
 
-    document.querySelector("#decrease-product-count");
+    let item = {
+      image: product.image,
+      title: product.title,
+      price: product.price,
+      discountedPrice: product.discountedPrice,
+      id: product.id,
+    };
+
+    removeProductButton.addEventListener("click", function removeProduct() {
+      cartProduct.remove();
+
+      let updatedCart = JSON.parse(localStorage.getItem("cart"));
+      console.log(updatedCart);
+
+      updatedCart = updatedCart.filter((cart) => cart.title != product.title);
+
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+
+      document.querySelector("#cart-count").innerText = JSON.parse(
+        localStorage.getItem("cart")
+      ).length;
+    });
+
+    increaseProductCount.addEventListener("click", function something() {
+      productCount.innerText++;
+
+      console.log(product.id);
+
+      let updatedCart = JSON.parse(localStorage.getItem("cart"));
+      updatedCart.push(item);
+
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+
+      document.querySelector("#cart-count").innerText = JSON.parse(
+        localStorage.getItem("cart")
+      ).length;
+    });
+
+    decreaseProductCount.addEventListener("click", function something() {
+      productCount.innerText--;
+
+      let updatedCart = JSON.parse(localStorage.getItem("cart"));
+      updatedCart = updatedCart.splice(updatedCart.indexOf(product.title), 1);
+
+      console.log(updatedCart);
+
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+
+      document.querySelector("#cart-count").innerText = JSON.parse(
+        localStorage.getItem("cart")
+      ).length;
+    });
   });
 }
-
-export function getProductCount(items) {
-  items.forEach((item) => {
-    const title = items.map(({ title }) => title);
-
-    console.log(title);
-
-    let val;
-    let countVal = {};
-    for (val of title) {
-      if (countVal[val]) {
-        countVal[val] += 1;
-      } else {
-        countVal[val] = 1;
-      }
-    }
-
-    console.log(countVal);
-
-    console.log(Object.values(countVal));
-  });
-}
-
-getProductCount(cartItems);

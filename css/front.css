@@ -18,6 +18,7 @@
   anchor-name: --carousel;
   scroll-snap-type: x mandatory;
   scroll-marker-group: after;
+  z-index: 0;
 }
 
 .carousel::scroll-marker-group {
@@ -102,10 +103,12 @@
   border-style: solid;
   border-width: 1px;
   border-color: var(--black);
+  width: 300px;
 }
 
 .product-card img {
   width: 100%;
+  height: 300px;
   object-fit: cover;
 }
 

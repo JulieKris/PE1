@@ -21,9 +21,6 @@ let noDuplicateItems = cartItems.filter(
   ({ id }, index) => !ids.includes(id, index + 1)
 );
 
-console.log(noDuplicateItems);
-console.log(cartItems);
-
 if (localStorage.getItem("cart") == null) {
   localStorage.setItem("cart", "[]");
 }
@@ -52,6 +49,7 @@ async function fetchProduct() {
 
     renderProductInfo();
     displayProducts(allProducts);
+    displayCartItems(noDuplicateItems);
     addToCart();
 
     document.querySelector("#cart-count").innerText = JSON.parse(
@@ -118,8 +116,6 @@ function renderProductInfo() {
     productDiscountedPrice.style.display = "block";
     productPrice.style.textDecoration = "line-through";
   }
-
-  console.log(productPrice.innerText);
 
   /*Container for the add to cart and wishlist buttons*/
   const buttonContainer = document.createElement("div");
@@ -220,36 +216,45 @@ function renderProductInfo() {
 
 fetchProduct();
 cartFunctions();
-displayCartItems(noDuplicateItems);
 
 /*Add product to cart*/
 function addToCart() {
   document
     .querySelector("#add-to-cart")
     .addEventListener("click", function addToCart() {
-      if (localStorage.getItem("cart") !== null) {
+      if (
+        JSON.parse(localStorage.getItem("cart")).some(
+          (e) => e.title === title
+        ) === false
+      ) {
+        let item = {
+          image: image,
+          title: title,
+          price: price,
+          discountedPrice: discountedPrice,
+          id: id,
+        };
+
+        let updatedCart = JSON.parse(localStorage.getItem("cart"));
+        updatedCart.push(item);
+
+        console.log(item.title);
+
+        localStorage.setItem("cart", JSON.stringify(updatedCart));
+
+        document.querySelector("#cart-count").innerText = JSON.parse(
+          localStorage.getItem("cart")
+        ).length;
+
+        const ids = updatedCart.map(({ id }) => id);
+        let reloadCart = updatedCart.filter(
+          ({ id }, index) => !ids.includes(id, index + 1)
+        );
+
+        document.querySelector("#cart-items").innerHTML = "";
+        displayCartItems(reloadCart);
       } else {
-        localStorage.setItem("cart", "[]");
+        alert("already added to cart");
       }
-
-      let item = {
-        image: image,
-        title: title,
-        price: price,
-        discountedPrice: discountedPrice,
-        id: id,
-      };
-
-      let updatedCart = JSON.parse(localStorage.getItem("cart"));
-      updatedCart.push(item);
-
-      localStorage.setItem("cart", JSON.stringify(updatedCart));
-
-      document.querySelector("#cart-count").innerText = JSON.parse(
-        localStorage.getItem("cart")
-      ).length;
-
-      document.getElementById("cart-items").innerHTML = "";
-      displayCartItems(noDuplicateItems);
     });
 }

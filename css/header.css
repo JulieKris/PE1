@@ -43,6 +43,7 @@ header {
 
 .cart-icon {
   position: relative;
+  cursor: pointer;
 }
 
 .cart-count {
@@ -53,7 +54,7 @@ header {
   text-align: center;
   background-color: var(--blue);
   position: absolute;
-  top: -10px;
+  top: -5px;
   right: 0;
 }
 
@@ -67,6 +68,9 @@ header {
   transition: 0.5s;
   z-index: 1;
   height: 100vh;
+  background-color: var(--light-green);
+  border-left: 1px solid black;
+  height: 100%;
 }
 
 .cart {
@@ -74,10 +78,7 @@ header {
   flex-direction: column;
   align-items: center;
   gap: 16px;
-  background-color: var(--light-green);
   padding: 32px;
-  border-left: 1px solid black;
-  height: 100%;
 }
 
 .cart-top {
@@ -95,6 +96,11 @@ header {
   width: 50px;
   height: 50px;
   background-color: red;
+}
+
+.empty-cart {
+  padding: 32px;
+  text-align: center;
 }
 
 .cart-items {
