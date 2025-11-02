@@ -103,6 +103,20 @@ header {
   text-align: center;
 }
 
+.cart-total {
+  display: none;
+  gap: 16px;
+  margin-left: auto;
+}
+
+.cart-total p {
+  font-size: 24px;
+}
+
+.total-amount {
+  font-weight: 700;
+}
+
 .cart-items {
   display: flex;
   flex-direction: column;
@@ -146,6 +160,7 @@ header {
   width: 20px;
   height: 20px;
   text-align: center;
+  min-width: min-content;
 }
 
 .increase-product-count,
@@ -163,6 +178,7 @@ header {
   border-style: solid;
   border-width: 1px;
   border-color: black;
+  color: white;
   background-color: var(--blue);
   cursor: pointer;
 }

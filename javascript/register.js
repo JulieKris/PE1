@@ -1,3 +1,5 @@
+import { displayCartTotal } from "./cart.mjs";
+
 const apiUrl = "https://v2.api.noroff.dev/online-shop";
 
 let allProducts = [];
@@ -18,6 +20,7 @@ async function fetchProducts() {
 }
 
 fetchProducts();
+displayCartTotal();
 
 var number = 0;
 

@@ -1,6 +1,6 @@
 import { displayProducts } from "./display-products.mjs";
 import { cartFunctions } from "./header.mjs";
-import { displayCartItems } from "./display-cart-items.mjs";
+import { displayCartItems, displayCartTotal } from "./cart.mjs";
 
 let image;
 let title;
@@ -215,6 +215,7 @@ function renderProductInfo() {
 }
 
 fetchProduct();
+displayCartTotal();
 cartFunctions();
 
 /*Add product to cart*/
@@ -233,12 +234,11 @@ function addToCart() {
           price: price,
           discountedPrice: discountedPrice,
           id: id,
+          quantity: 1,
         };
 
         let updatedCart = JSON.parse(localStorage.getItem("cart"));
         updatedCart.push(item);
-
-        console.log(item.title);
 
         localStorage.setItem("cart", JSON.stringify(updatedCart));
 

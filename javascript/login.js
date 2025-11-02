@@ -1,3 +1,4 @@
+import { displayCartItems, displayCartTotal } from "./cart.mjs";
 import { cartFunctions } from "./header.mjs";
 
 const apiUrl = "https://v2.api.noroff.dev/online-shop";
@@ -35,4 +36,5 @@ function createSlides(products) {
 }
 
 cartFunctions();
+displayCartTotal();
 displayCartItems();
