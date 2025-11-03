@@ -1,10 +1,15 @@
 import { displayProducts } from "./display-products.mjs";
-import { cartFunctions } from "./header.mjs";
-import { displayCartItems, displayCartTotal } from "./cart.mjs";
+import { cartFunctions, updateCartCount } from "./header.mjs";
+import {
+  displayCartItems,
+  displayCartTotal,
+  updateCartTotal,
+} from "./cart.mjs";
 
 let image;
 let title;
 let description;
+let tags = [];
 let price;
 let discountedPrice;
 let rating;
@@ -42,19 +47,22 @@ async function fetchProduct() {
     image = productData.data.image.url;
     title = productData.data.title;
     description = productData.data.description;
+    tags = productData.data.tags;
     price = productData.data.price;
     discountedPrice = productData.data.discountedPrice;
     rating = productData.data.rating;
     reviews = productData.data.reviews;
 
+    let recommendedProducts = allProducts.sort(() => Math.random() - 0.5);
+    recommendedProducts = recommendedProducts.filter(
+      (product) => product.title !== productData.data.title
+    );
+    recommendedProducts = recommendedProducts.slice(0, 8);
+
     renderProductInfo();
-    displayProducts(allProducts);
+    displayProducts(recommendedProducts);
     displayCartItems(noDuplicateItems);
     addToCart();
-
-    document.querySelector("#cart-count").innerText = JSON.parse(
-      localStorage.getItem("cart")
-    ).length;
   } catch (error) {
     console.error("Error fetching product:", error);
   }
@@ -80,6 +88,20 @@ function renderProductInfo() {
   const productInfo = document.createElement("div");
   productInfo.className = "product-info";
   productDetails.appendChild(productInfo);
+
+  const tagsContainer = document.createElement("div");
+  tagsContainer.className = "tags-container";
+  productDetails.appendChild(tagsContainer);
+
+  const tagsHeading = document.createElement("p");
+  tagsHeading.innerText = "Tags: ";
+  tagsContainer.appendChild(tagsHeading);
+
+  const productTags = document.createElement("p");
+  productTags.innerText = tags.join(", ");
+  productTags.className = "tags";
+  tagsContainer.appendChild(productTags);
+  console.log(tags);
 
   /*Product title*/
   const productTitle = document.createElement("h1");
@@ -129,11 +151,12 @@ function renderProductInfo() {
   buttonContainer.appendChild(addToCartButton);
 
   /*Wishlist button*/
-  const wishlistButton = document.createElement("div");
-  wishlistButton.className = "wishlist-button";
-  buttonContainer.appendChild(wishlistButton);
-  wishlistButton.innerHTML =
-    '<svg width="40" height="37" viewBox="0 0 40 37" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M29 2C34.0401 2 38 5.96871 38 11.0898C38 14.2491 36.6085 17.2693 33.7588 20.7842C30.8856 24.328 26.7392 28.1285 21.5488 32.8838L20.0049 34.29L18.4521 32.8652L18.4492 32.8623C13.2593 28.1176 9.11293 24.3221 6.24023 20.7812C3.39104 17.2693 2 14.249 2 11.0898C2.00004 5.96871 5.95991 2 11 2C13.8683 2 16.6567 3.35623 18.4717 5.50488L20 7.31348L21.5283 5.50488C23.3433 3.35623 26.1317 2 29 2Z" stroke="#255EED" stroke-width="4"/></svg>';
+  const shareButton = document.createElement("div");
+  shareButton.className = "share-button";
+  shareButton.id = "share-button";
+  buttonContainer.appendChild(shareButton);
+  shareButton.innerHTML =
+    '<svg width="32" height="44" viewBox="0 0 40 55" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M30 10L26.45 13.55L22.475 9.575V37.5H17.525V9.575L13.55 13.55L10 10L20 0L30 10ZM40 22.5V50C40 52.75 37.75 55 35 55H5C2.225 55 0 52.75 0 50V22.5C0 19.725 2.225 17.5 5 17.5H12.5V22.5H5V50H35V22.5H27.5V17.5H35C37.75 17.5 40 19.725 40 22.5Z" fill="#255EED"/></svg>';
 
   /*Rating container*/
   const ratingContainer = document.createElement("div");
@@ -216,6 +239,8 @@ function renderProductInfo() {
 
 fetchProduct();
 displayCartTotal();
+updateCartTotal();
+updateCartCount();
 cartFunctions();
 
 /*Add product to cart*/
@@ -242,10 +267,6 @@ function addToCart() {
 
         localStorage.setItem("cart", JSON.stringify(updatedCart));
 
-        document.querySelector("#cart-count").innerText = JSON.parse(
-          localStorage.getItem("cart")
-        ).length;
-
         const ids = updatedCart.map(({ id }) => id);
         let reloadCart = updatedCart.filter(
           ({ id }, index) => !ids.includes(id, index + 1)
@@ -255,20 +276,18 @@ function addToCart() {
         displayCartItems(reloadCart);
 
         //Update cart total
-        let individualProductTotal = [];
-        let newCartTotal = JSON.parse(localStorage.getItem("cart"));
-        newCartTotal.forEach((product) => {
-          individualProductTotal.push(
-            product.discountedPrice * product.quantity
-          );
-        });
+        updateCartTotal();
 
-        newCartTotal = individualProductTotal.reduce((a, b) => a + b, 0);
-
-        document.querySelector(".total-amount").innerText =
-          newCartTotal.toFixed(2) + " kr";
+        //update cart count
+        updateCartCount();
       } else {
         alert("already added to cart");
       }
     });
+}
+
+function shareURL() {
+  const shareURLcontainer = document.createElement("div");
+  const shareableURL = document.createElement("input");
+  const copyURL = document.createElement("button");
 }

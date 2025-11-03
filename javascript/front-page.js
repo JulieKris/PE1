@@ -1,5 +1,9 @@
-import { cartFunctions } from "./header.mjs";
-import { displayCartItems, displayCartTotal } from "./cart.mjs";
+import { cartFunctions, updateCartCount } from "./header.mjs";
+import {
+  displayCartItems,
+  displayCartTotal,
+  updateCartTotal,
+} from "./cart.mjs";
 import { displayProducts } from "./display-products.mjs";
 import { displayCarouselItmes } from "./display-carousel-items.mjs";
 
@@ -13,22 +17,20 @@ let filteredProducts = [];
 
 let cartItems = JSON.parse(localStorage.getItem("cart"));
 
+localStorage.setItem("login", "false");
+
 async function fetchProducts() {
   try {
     const response = await fetch(apiUrl);
     const data = await response.json();
 
     allProducts = data.data;
-    carouselProducts = allProducts.slice(0, 4);
+    carouselProducts = allProducts.slice(0, 3);
 
     displayCarouselItmes(carouselProducts);
     getProductTags(allProducts);
     productFilter(productTags);
     openAndCloseFilters();
-
-    document.querySelector("#cart-count").innerText = JSON.parse(
-      localStorage.getItem("cart")
-    ).length;
   } catch (error) {
     console.error("Error fetching products:", error);
   }
@@ -36,7 +38,9 @@ async function fetchProducts() {
 
 fetchProducts();
 cartFunctions();
+updateCartCount();
 displayCartTotal();
+updateCartTotal();
 displayCartItems(cartItems);
 
 function getProductTags() {

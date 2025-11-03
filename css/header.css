@@ -22,11 +22,6 @@ header {
   align-items: center;
 }
 
-.navbar .active {
-  font-size: 30px;
-  font-weight: 800;
-}
-
 .navbar a {
   text-decoration: none;
   transition: 0.2s;
@@ -35,6 +30,11 @@ header {
 
 .navbar a:hover {
   font-size: 30px;
+}
+
+.navbar:active {
+  font-size: 30px;
+  font-weight: 800;
 }
 
 .navbar a:visited {
@@ -93,9 +93,7 @@ header {
 }
 
 .cart-close {
-  width: 50px;
-  height: 50px;
-  background-color: red;
+  cursor: pointer;
 }
 
 .empty-cart {
@@ -137,17 +135,22 @@ header {
 }
 
 .cart-product-title {
-  width: 100%;
+  width: 200px;
 }
 
-.cart-product img {
-  width: 60%;
+.product-img-container {
+  display: flex;
   height: 80px;
+  width: 80px;
+}
+
+.cart-product-img {
+  width: 100%;
   object-fit: cover;
 }
 
 .cart-price-container {
-  width: 500px;
+  width: 100px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -191,6 +194,12 @@ header {
   border-color: black;
   color: white;
   background-color: var(--blue);
+  cursor: pointer;
+}
+
+.remove-product {
+  display: flex;
+  justify-content: center;
   cursor: pointer;
 }
 

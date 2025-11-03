@@ -2,19 +2,33 @@
 <html lang="en">
   <head>
     <meta meta charset="utf-8" />
-    <title>Testing</title>
+    <meta name="theme-color" content="#255EED" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HopShop</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Fruktur:ital@0;1&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/Images/favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/Images/favicon-32x32.png"
+    />
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
     <header>
       <div class="logo">
-        <a href="/index.html"><img src="/Images/Logo.svg" /></a>
+        <a href="/index.html"><img src="Images/Logo.svg" /></a>
       </div>
       <ul class="navbar">
         <li><a href="">Products</a></li>
@@ -40,7 +54,20 @@
         <div class="cart">
           <div class="cart-top">
             <h2>Cart</h2>
-            <div class="cart-close" id="cart-close"></div>
+            <div class="cart-close" id="cart-close">
+              <svg
+                width="40"
+                height="40"
+                viewBox="0 0 32 32"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M32 6.23682L30.8571 1.07898L26.2142 0L16 10.3948L6.57145 5.72205e-05L2.07141 1.07898L0 6.23682L9.5 16.5L0 24.7368L1.57141 30.079L6.57141 32L16 22.5L24.5714 32L30.0714 30.8772L32 24.7368L23 16.5L32 6.23682Z"
+                  fill="#255EED"
+                />
+              </svg>
+            </div>
           </div>
           <div class="cart-items" id="cart-items"></div>
           <div class="cart-total"></div>

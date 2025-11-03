@@ -3,7 +3,7 @@ export function displayProducts(products) {
     const productCard = document.createElement("div");
     const productImg = document.createElement("img");
     const productTextContainer = document.createElement("div");
-    const productTitle = document.createElement("h3");
+    const productTitle = document.createElement("h2");
     const productPrice = document.createElement("p");
     const productDiscountedPrice = document.createElement("p");
     const anchor = document.createElement("a");
@@ -12,7 +12,7 @@ export function displayProducts(products) {
     productTitle.textContent = product.title;
     productPrice.textContent = product.price + " kr";
     productDiscountedPrice.textContent = product.discountedPrice + " kr";
-    anchor.href = `/product/index.html?id=${product.id}`;
+    anchor.href = `/PE1/product/index.html?id=${product.id}`;
 
     productCard.className = "product-card";
     productImg.className = "product-img";

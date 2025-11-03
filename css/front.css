@@ -128,11 +128,6 @@
   background-color: var(--blue);
 }
 
-.filter:active {
-  color: white;
-  background-color: var(--blue);
-}
-
 .filter:last-child {
   margin-right: auto;
 }

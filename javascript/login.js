@@ -1,9 +1,11 @@
 import { displayCartItems, displayCartTotal } from "./cart.mjs";
-import { cartFunctions } from "./header.mjs";
+import { cartFunctions, updateCartCount } from "./header.mjs";
 
 const apiUrl = "https://v2.api.noroff.dev/online-shop";
 
 let allProducts = [];
+
+let cartItems = JSON.parse(localStorage.getItem("cart"));
 
 async function fetchProducts() {
   try {
@@ -11,10 +13,11 @@ async function fetchProducts() {
     const data = await response.json();
 
     allProducts = data.data;
-    let slideImages = allProducts.slice(0, 5);
-    createSlides(slideImages);
 
-    console.log(allProducts);
+    let randomProducts = allProducts.sort(() => Math.random() - 0.5);
+    let slideImages = randomProducts.slice(0, 5);
+
+    createSlides(slideImages);
   } catch (error) {
     console.error("Error fetching products:", error);
   }
@@ -36,5 +39,6 @@ function createSlides(products) {
 }
 
 cartFunctions();
+updateCartCount();
 displayCartTotal();
-displayCartItems();
+displayCartItems(cartItems);
