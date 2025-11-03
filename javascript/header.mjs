@@ -3,7 +3,7 @@ export function cartFunctions() {
   const close = document.querySelector("#cart-close");
 
   open.addEventListener("click", function openMenu() {
-    document.querySelector(".cart-container").style.width = "700px";
+    document.querySelector(".cart-container").style.width = "600px";
   });
 
   close.addEventListener("click", function closeMenu() {

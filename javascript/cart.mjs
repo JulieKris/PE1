@@ -110,6 +110,18 @@ export function displayCartItems(products) {
         localStorage.getItem("cart")
       ).length;
 
+      //Update cart total
+      let individualProductTotal = [];
+      let newCartTotal = JSON.parse(localStorage.getItem("cart"));
+      newCartTotal.forEach((product) => {
+        individualProductTotal.push(product.discountedPrice * product.quantity);
+      });
+
+      newCartTotal = individualProductTotal.reduce((a, b) => a + b, 0);
+
+      document.querySelector(".total-amount").innerText =
+        newCartTotal.toFixed(2) + " kr";
+
       // render empty cart message when removing last item in cart
       if (localStorage.getItem("cart") == "[]") {
         const emptyCartMessage = document.createElement("p");
@@ -169,6 +181,18 @@ export function displayCartItems(products) {
         increaseItemDiscPrice[0].discountedPrice * increaseCartItemCount;
 
       cartProductDiscPrice.innerText = increaseItemDiscPrice.toFixed(2) + " kr";
+
+      //Update cart total
+      let individualProductTotal = [];
+      let newCartTotal = JSON.parse(localStorage.getItem("cart"));
+      newCartTotal.forEach((product) => {
+        individualProductTotal.push(product.discountedPrice * product.quantity);
+      });
+
+      newCartTotal = individualProductTotal.reduce((a, b) => a + b, 0);
+
+      document.querySelector(".total-amount").innerText =
+        newCartTotal.toFixed(2) + " kr";
     });
 
     //decrese the number of a product in the cart
@@ -225,21 +249,42 @@ export function displayCartItems(products) {
 
         cartProductDiscPrice.innerText =
           decreaseItemDiscPrice.toFixed(2) + " kr";
+
+        //Update cart total
+        let individualProductTotal = [];
+        let newCartTotal = JSON.parse(localStorage.getItem("cart"));
+        newCartTotal.forEach((product) => {
+          individualProductTotal.push(
+            product.discountedPrice * product.quantity
+          );
+        });
+
+        newCartTotal = individualProductTotal.reduce((a, b) => a + b, 0);
+
+        document.querySelector(".total-amount").innerText =
+          newCartTotal.toFixed(2) + " kr";
       }
     });
   });
 }
 
 export function displayCartTotal() {
-  const cartTotal = document.querySelector(".cart-total");
+  let individualProductTotal = [];
+  let cartTotal = JSON.parse(localStorage.getItem("cart"));
+  cartTotal.forEach((product) => {
+    individualProductTotal.push(product.discountedPrice * product.quantity);
+  });
+
+  cartTotal = individualProductTotal.reduce((a, b) => a + b, 0);
+
   const totalText = document.createElement("p");
   const totalAmount = document.createElement("p");
 
   totalAmount.className = "total-amount";
+  totalAmount.innerText = cartTotal.toFixed(2) + " kr";
 
   totalText.innerText = "Total";
-  totalAmount.innerText = 0 + "kr";
 
-  cartTotal.appendChild(totalText);
-  cartTotal.appendChild(totalAmount);
+  document.querySelector(".cart-total").appendChild(totalText);
+  document.querySelector(".cart-total").appendChild(totalAmount);
 }

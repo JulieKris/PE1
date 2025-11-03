@@ -253,6 +253,20 @@ function addToCart() {
 
         document.querySelector("#cart-items").innerHTML = "";
         displayCartItems(reloadCart);
+
+        //Update cart total
+        let individualProductTotal = [];
+        let newCartTotal = JSON.parse(localStorage.getItem("cart"));
+        newCartTotal.forEach((product) => {
+          individualProductTotal.push(
+            product.discountedPrice * product.quantity
+          );
+        });
+
+        newCartTotal = individualProductTotal.reduce((a, b) => a + b, 0);
+
+        document.querySelector(".total-amount").innerText =
+          newCartTotal.toFixed(2) + " kr";
       } else {
         alert("already added to cart");
       }

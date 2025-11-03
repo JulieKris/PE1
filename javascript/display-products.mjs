@@ -2,6 +2,7 @@ export function displayProducts(products) {
   products.forEach((product) => {
     const productCard = document.createElement("div");
     const productImg = document.createElement("img");
+    const productTextContainer = document.createElement("div");
     const productTitle = document.createElement("h3");
     const productPrice = document.createElement("p");
     const productDiscountedPrice = document.createElement("p");
@@ -15,6 +16,7 @@ export function displayProducts(products) {
 
     productCard.className = "product-card";
     productImg.className = "product-img";
+    productTextContainer.className = "product-text";
     productPrice.className = "price";
     productDiscountedPrice.className = "discounted-price";
     anchor.className = "product-link";
@@ -22,9 +24,10 @@ export function displayProducts(products) {
     document.querySelector("#product-cards").appendChild(anchor);
     anchor.appendChild(productCard);
     productCard.appendChild(productImg);
-    productCard.appendChild(productTitle);
-    productCard.appendChild(productPrice);
-    productCard.appendChild(productDiscountedPrice);
+    productCard.appendChild(productTextContainer);
+    productTextContainer.appendChild(productTitle);
+    productTextContainer.appendChild(productPrice);
+    productTextContainer.appendChild(productDiscountedPrice);
 
     if (productPrice.innerText !== productDiscountedPrice.innerText) {
       productDiscountedPrice.style.display = "block";

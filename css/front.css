@@ -128,7 +128,24 @@
   background-color: var(--blue);
 }
 
+.filter:active {
+  color: white;
+  background-color: var(--blue);
+}
+
 .filter:last-child {
+  margin-right: auto;
+}
+
+.product-link {
+  text-decoration: none;
+}
+
+.product-link:visited {
+  color: black;
+}
+
+.product-link:last-child {
   margin-right: auto;
 }
 
@@ -142,21 +159,28 @@
 }
 
 .product-card {
-  min-width: 100px;
-  max-width: 500px;
+  width: 300px;
+  background-color: var(--light-green);
   border-style: solid;
   border-width: 1px;
   border-color: var(--black);
-}
-
-.product-link:last-child {
-  margin-right: auto;
 }
 
 .product-card img {
   width: 100%;
   height: 300px;
   object-fit: cover;
+}
+
+.product-text {
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 16px;
+}
+
+.product-text p {
+  font-size: 16px;
+  font-weight: 500;
 }
 
 .price {

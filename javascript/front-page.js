@@ -61,12 +61,20 @@ function openAndCloseFilters() {
       } else {
         document.querySelector(".filters").style.height = "0px";
         document.querySelector("#open-filters").innerText = "+ Filters";
+        const list = document.querySelectorAll(".product-link");
+
+        //When closing the filters all products are displayed again.
+        for (const element of list) {
+          element.remove();
+        }
+        displayProducts(allProducts);
       }
     });
 }
 
 function productFilter(tags) {
   tags.forEach((tag) => {
+    // Create product filters
     const filter = document.createElement("p");
     filter.className = "filter";
     filter.id = "#filter";
@@ -76,55 +84,19 @@ function productFilter(tags) {
     filter.addEventListener("click", () => {
       const list = document.querySelectorAll(".product-link");
       for (const element of list) {
-        //remove previous renderedfilms when new option is selected
+        //remove previous renderedfilms when filter is selected
         element.remove();
       }
-      if (selectedTag.length == 0) {
-        selectedTag.push(filter.innerText);
-        filter.style.backgroundColor = "var(--blue)";
-        filter.style.color = "white";
-      } else {
-        if (selectedTag.includes(filter.innerText)) {
-          selectedTag.forEach((tag, tagx) => {
-            if (tag == filter.innerText) {
-              selectedTag.splice(tagx, 1);
-              filter.style.backgroundColor = "var(--light-green)";
-              filter.style.color = "black";
-            }
-          });
-        } else {
-          selectedTag.push(filter.innerText);
-          filter.style.backgroundColor = "var(--blue)";
-          filter.style.color = "white";
-        }
-      }
 
-      allProducts.forEach((product) => {
-        if (product.tags.includes(tag)) {
-          if (filteredProducts.length === 0) {
-            filteredProducts.push(product);
-          } else {
-            if (filteredProducts.includes(product)) {
-              console.log("heeeeeelp");
-              //filteredProducts.forEach((product, productx) => {
-              //if (product.tags.includes(tag)) {
-              //filteredProducts.splice(product.tags);
-              //}
-              //});
-            } else {
-              filteredProducts.push(product);
-            }
-          }
-        }
-      });
-      filteredProducts = new Set(filteredProducts);
-      filteredProducts = Array.from(filteredProducts);
+      // Display filtered products
+      filteredProducts = allProducts.filter((product) =>
+        product.tags.includes(tag)
+      );
+
       displayProducts(filteredProducts);
-      console.log(filteredProducts);
     });
   });
   if (selectedTag.length == 0) {
-    console.log("no filters selected");
     displayProducts(allProducts);
   }
 }
