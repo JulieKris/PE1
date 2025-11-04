@@ -1,5 +1,6 @@
 .checkout {
   display: flex;
+  flex-direction: row;
   gap: 64px;
   margin: auto;
   width: min-content;
@@ -11,6 +12,12 @@
   align-items: center;
   gap: 16px;
   padding: 32px;
+  width: 100%;
+  background-color: var(--light-green);
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  height: min-content;
 }
 
 .checkout-cart h2 {
@@ -19,10 +26,9 @@
 }
 
 .checkout-cart-total {
-  display: none;
+  display: flex;
   gap: 16px;
   margin-left: auto;
-  background-color: aqua;
 }
 
 .checkout-cart-total p {
@@ -30,23 +36,94 @@
 }
 
 .checkout .form-container {
-  margin: 0;
+  width: 100%;
 }
 
 .checkout .form h2 {
   margin-top: 64px;
 }
 
-.checkout-cart {
-  width: 700px;
-  padding: 32px;
-  background-color: var(--light-green);
-  border-style: solid;
-  border-color: black;
-  border-width: 1px;
-  height: min-content;
+.postal-city {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
 }
 
-.checkout input {
-  width: 400px;
+.postal-code {
+  width: 100%;
+}
+
+.postal-code input {
+  width: 100%;
+}
+
+.city {
+  width: 100%;
+}
+
+.city input {
+  width: 100%;
+}
+
+.payment-options {
+  display: flex;
+  gap: 32px;
+}
+
+.payment-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.payment-option input {
+  height: 16px;
+  width: 16px;
+}
+
+.payment-option img {
+  width: 45px;
+  object-fit: contain;
+}
+
+#payment-options-error {
+  display: block;
+}
+
+.card-payment {
+  display: none;
+  margin-top: 16px;
+}
+
+.expdate-cvc {
+  margin-top: 16px;
+  display: flex;
+  gap: 16px;
+}
+
+.expiry-date {
+  width: 100%;
+}
+
+.expiry-date input {
+  width: 100%;
+}
+
+.security-number {
+  width: 100%;
+}
+
+.security-number input {
+  width: 100%;
+}
+
+.bipps-payment {
+  display: none;
+  margin-top: 16px;
+}
+
+@media only screen and (max-width: 1000px) {
+  .checkout {
+    flex-direction: column;
+  }
 }

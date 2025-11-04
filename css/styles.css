@@ -5,6 +5,8 @@
 @import url("product.css");
 @import url("forms.css");
 @import url("checkout.css");
+@import url("cart.css");
+@import url("profile.css");
 
 * {
   padding: 0;
@@ -24,6 +26,7 @@ body {
 main {
   margin-left: 64px;
   margin-right: 64px;
+  background-color: aqua;
 }
 
 h1,
@@ -143,5 +146,12 @@ button:hover {
       0 30%,
       4% 20%
     );
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  main {
+    margin-left: 16px;
+    margin-right: 16px;
   }
 }

@@ -133,6 +133,7 @@
 }
 
 .product-link {
+  color: black;
   text-decoration: none;
 }
 
@@ -252,5 +253,23 @@
       0% 70%,
       8% 25%
     );
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .carousel {
+    height: 400px;
+  }
+
+  .carousel-slide {
+    padding: 32px;
+  }
+
+  .carousel-image-container {
+    filter: drop-shadow(75px -50px 0px #255eed);
+  }
+
+  .carousel-slide img {
+    width: 400px;
   }
 }

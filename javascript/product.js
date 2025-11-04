@@ -1,5 +1,10 @@
 import { displayProducts } from "./display-products.mjs";
-import { cartFunctions, updateCartCount } from "./header.mjs";
+import {
+  cartFunctions,
+  displayLoggedIn,
+  profile,
+  updateCartCount,
+} from "./header.mjs";
 import {
   displayCartItems,
   displayCartTotal,
@@ -63,6 +68,7 @@ async function fetchProduct() {
     displayProducts(recommendedProducts);
     displayCartItems(noDuplicateItems);
     addToCart();
+    shareURL();
   } catch (error) {
     console.error("Error fetching product:", error);
   }
@@ -88,20 +94,6 @@ function renderProductInfo() {
   const productInfo = document.createElement("div");
   productInfo.className = "product-info";
   productDetails.appendChild(productInfo);
-
-  const tagsContainer = document.createElement("div");
-  tagsContainer.className = "tags-container";
-  productDetails.appendChild(tagsContainer);
-
-  const tagsHeading = document.createElement("p");
-  tagsHeading.innerText = "Tags: ";
-  tagsContainer.appendChild(tagsHeading);
-
-  const productTags = document.createElement("p");
-  productTags.innerText = tags.join(", ");
-  productTags.className = "tags";
-  tagsContainer.appendChild(productTags);
-  console.log(tags);
 
   /*Product title*/
   const productTitle = document.createElement("h1");
@@ -147,16 +139,31 @@ function renderProductInfo() {
   /*Add to cart button*/
   const addToCartButton = document.createElement("button");
   addToCartButton.id = "add-to-cart";
+  addToCartButton.className = "add-to-cart";
   addToCartButton.innerText = "Add to cart";
   buttonContainer.appendChild(addToCartButton);
 
-  /*Wishlist button*/
+  /*Share button*/
   const shareButton = document.createElement("div");
   shareButton.className = "share-button";
   shareButton.id = "share-button";
   buttonContainer.appendChild(shareButton);
   shareButton.innerHTML =
     '<svg width="32" height="44" viewBox="0 0 40 55" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M30 10L26.45 13.55L22.475 9.575V37.5H17.525V9.575L13.55 13.55L10 10L20 0L30 10ZM40 22.5V50C40 52.75 37.75 55 35 55H5C2.225 55 0 52.75 0 50V22.5C0 19.725 2.225 17.5 5 17.5H12.5V22.5H5V50H35V22.5H27.5V17.5H35C37.75 17.5 40 19.725 40 22.5Z" fill="#255EED"/></svg>';
+
+  /*tags*/
+  const tagsContainer = document.createElement("div");
+  tagsContainer.className = "tags-container";
+  productDetails.appendChild(tagsContainer);
+
+  const tagsHeading = document.createElement("p");
+  tagsHeading.innerText = "Tags: ";
+  tagsContainer.appendChild(tagsHeading);
+
+  const productTags = document.createElement("p");
+  productTags.innerText = tags.join(", ");
+  productTags.className = "tags";
+  tagsContainer.appendChild(productTags);
 
   /*Rating container*/
   const ratingContainer = document.createElement("div");
@@ -210,7 +217,7 @@ function renderProductInfo() {
     noReviewsMessage.style.display = "block";
   }
 
-  /*Rendering individual reviews*/
+  /*Rendering indivdual reviews*/
   reviews.forEach((review) => {
     let starRating = review.rating * 10 * 2;
     const productReview = document.createElement("div");
@@ -238,6 +245,8 @@ function renderProductInfo() {
 }
 
 fetchProduct();
+displayLoggedIn();
+profile();
 displayCartTotal();
 updateCartTotal();
 updateCartCount();
@@ -281,7 +290,7 @@ function addToCart() {
         //update cart count
         updateCartCount();
       } else {
-        alert("already added to cart");
+        alert("Already added to cart.");
       }
     });
 }
@@ -290,4 +299,42 @@ function shareURL() {
   const shareURLcontainer = document.createElement("div");
   const shareableURL = document.createElement("input");
   const copyURL = document.createElement("button");
+
+  shareURLcontainer.className = "share-url-container";
+
+  shareableURL.setAttribute(
+    "value",
+    window.location.origin + "/product/index.html?id=" + id
+  );
+  copyURL.innerText = "Copy";
+
+  document.querySelector("#share-button").appendChild(shareURLcontainer);
+  shareURLcontainer.appendChild(shareableURL);
+  shareURLcontainer.appendChild(copyURL);
+
+  console.log(window.location.origin);
+
+  let share = false;
+
+  document
+    .querySelector("#share-button")
+    .addEventListener("click", function openCloseShare() {
+      if (share == false) {
+        shareURLcontainer.style.display = "flex";
+        share = true;
+      } else {
+        shareURLcontainer.style.display = "none";
+        share = false;
+      }
+    });
+
+  copyURL.addEventListener("click", function getLink() {
+    shareableURL.select();
+    shareableURL.setSelectionRange(0, 99999);
+
+    navigator.clipboard.writeText(shareableURL.value);
+
+    //tooltip saying you copied the text
+    alert("Link copied!");
+  });
 }

@@ -73,8 +73,28 @@
   justify-content: space-between;
 }
 
+.share-button {
+  position: relative;
+}
+
 .share-button svg {
   cursor: pointer;
+}
+
+.share-url-container {
+  display: none;
+  position: absolute;
+  gap: 16px;
+  justify-content: center;
+  padding: 32px;
+  background-color: var(--light-green);
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+}
+
+.add-to-cart {
+  opacity: 1;
 }
 
 .product-rating {

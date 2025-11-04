@@ -1,4 +1,9 @@
-import { cartFunctions, updateCartCount } from "./header.mjs";
+import {
+  cartFunctions,
+  displayLoggedIn,
+  profile,
+  updateCartCount,
+} from "./header.mjs";
 import {
   displayCartItems,
   displayCartTotal,
@@ -15,9 +20,11 @@ let productTags = [];
 let selectedTag = [];
 let filteredProducts = [];
 
-let cartItems = JSON.parse(localStorage.getItem("cart"));
+if (JSON.parse(localStorage.getItem("login") == null)) {
+  localStorage.setItem("login", "false");
+}
 
-localStorage.setItem("login", "false");
+let cartItems = JSON.parse(localStorage.getItem("cart"));
 
 async function fetchProducts() {
   try {
@@ -37,6 +44,8 @@ async function fetchProducts() {
 }
 
 fetchProducts();
+displayLoggedIn();
+profile();
 cartFunctions();
 updateCartCount();
 displayCartTotal();

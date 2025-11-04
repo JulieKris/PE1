@@ -11,13 +11,16 @@ export function displayCartItems(products) {
     const emptyCartMessage = document.createElement("p");
     emptyCartMessage.innerText = "There are currently no items in your cart.";
     emptyCartMessage.className = "empty-cart";
+    if (window.location.href.includes("checkout")) {
+      document.querySelector(".checkout-cart-total").style.display = "none";
+    }
     document.querySelector(".cart-total").style.display = "none";
     document.querySelector("#cart-items").appendChild(emptyCartMessage);
 
-    if (window.location.href.includes("Checkout")) {
+    if (window.location.href.includes("checkout")) {
       document
         .querySelector("#checkout-cart-items")
-        .appendChild(emptyCartMessage.cloneNode(true));
+        .appendChild(emptyCartMessage);
     }
   } else {
     document.querySelector(".cart-total").style.display = "flex";
@@ -83,10 +86,8 @@ export function displayCartItems(products) {
     productCountContainer.appendChild(increaseProductCount);
     cartProduct.appendChild(removeProductButton);
 
-    if (window.location.href.includes("Checkout")) {
-      document
-        .querySelector("#checkout-cart-items")
-        .appendChild(cartProduct.cloneNode(true));
+    if (window.location.href.includes("checkout")) {
+      document.querySelector("#checkout-cart-items").appendChild(cartProduct);
     }
 
     if (cartProductPrice.innerText !== cartProductDiscPrice.innerText) {
@@ -118,10 +119,11 @@ export function displayCartItems(products) {
         emptyCartMessage.className = "empty-cart";
         document.querySelector(".cart-total").style.display = "none";
 
-        if (window.location.href.includes("Checkout")) {
+        if (window.location.href.includes("checkout")) {
           document
             .querySelector("#checkout-cart-items")
             .appendChild(emptyCartMessage);
+          document.querySelector(".checkout-cart-total").style.display = "none";
         } else {
           document.querySelector("#cart-items").appendChild(emptyCartMessage);
         }
@@ -254,13 +256,9 @@ export function displayCartTotal() {
   document.querySelector(".cart-total").appendChild(totalText);
   document.querySelector(".cart-total").appendChild(totalAmount);
 
-  if (window.location.href.includes("Checkout")) {
-    document
-      .querySelector("#checkout-cart-total")
-      .appendChild(totalText.cloneNode(true));
-    document
-      .querySelector("#checkout-cart-total")
-      .appendChild(totalAmount.cloneNode(true));
+  if (window.location.href.includes("checkout")) {
+    document.querySelector("#checkout-cart-total").appendChild(totalText);
+    document.querySelector("#checkout-cart-total").appendChild(totalAmount);
   }
 }
 

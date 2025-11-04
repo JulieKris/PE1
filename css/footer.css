@@ -5,6 +5,7 @@ footer {
   padding-left: 64px;
   padding-top: 128px;
   gap: 64px;
+  width: 100%;
 }
 
 .footer-links ul {

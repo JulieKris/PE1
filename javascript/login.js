@@ -1,5 +1,10 @@
 import { displayCartItems, displayCartTotal } from "./cart.mjs";
-import { cartFunctions, updateCartCount } from "./header.mjs";
+import {
+  cartFunctions,
+  displayLoggedIn,
+  profile,
+  updateCartCount,
+} from "./header.mjs";
 
 const apiUrl = "https://v2.api.noroff.dev/online-shop";
 
@@ -38,7 +43,46 @@ function createSlides(products) {
   });
 }
 
+displayLoggedIn();
+profile();
 cartFunctions();
 updateCartCount();
 displayCartTotal();
 displayCartItems(cartItems);
+
+let username = document.querySelector("#username");
+let password = document.querySelector("#password");
+
+//login form check
+document.querySelector("#login-button").addEventListener("click", (e) => {
+  e.preventDefault();
+  if (username.value == 0) {
+    username.style.borderColor = "red";
+    document.querySelector("#login-username-error").style.display = "block";
+  } else {
+    username.style.borderColor = "black";
+    document.querySelector("#login-username-error").style.display = "none";
+    if (password.value == 0) {
+      password.style.borderColor = "red";
+      document.querySelector("#login-error").innerText =
+        "Please input password.";
+      document.querySelector("#login-error").style.display = "block";
+    } else {
+      if (
+        username.value !==
+          JSON.parse(localStorage.getItem("registeredUser")).username ||
+        password.value !==
+          JSON.parse(localStorage.getItem("registeredUser")).password
+      ) {
+        document.querySelector("#login-error").innerText =
+          "Wrong password or username.";
+        document.querySelector("#login-error").style.display = "block";
+      } else {
+        password.style.borderColor = "black";
+        document.querySelector("#login-error").style.display = "none";
+        localStorage.setItem("login", "true");
+        window.location.href = "../index.html";
+      }
+    }
+  }
+});

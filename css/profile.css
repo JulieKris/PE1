@@ -1,0 +1,52 @@
+.profile-container {
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 0px;
+  right: 0px;
+  top: 0px;
+  transition: 0.5s;
+  z-index: 1;
+  height: 100vh;
+  background-color: var(--light-green);
+  border-left: 1px solid black;
+  height: 100%;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 32px;
+}
+
+.profile ul {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.profile li {
+  list-style: none;
+}
+
+.profile a {
+  color: black;
+}
+
+.profile a:visited {
+  color: black;
+}
+
+.profile-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile-top h2 {
+  font-size: 32px;
+}
+
+.profile-close {
+  cursor: pointer;
+}

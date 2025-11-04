@@ -1,0 +1,145 @@
+.cart-container {
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 0px;
+  right: 0px;
+  top: 0px;
+  transition: 0.5s;
+  z-index: 1;
+  height: 100vh;
+  background-color: var(--light-green);
+  border-left: 1px solid black;
+  height: 100%;
+}
+
+.cart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 32px;
+}
+
+.cart-top {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-top h2 {
+  font-size: 32px;
+}
+
+.cart-close {
+  cursor: pointer;
+}
+
+.empty-cart {
+  padding: 32px;
+  text-align: center;
+}
+
+.cart-total {
+  display: none;
+  gap: 16px;
+  margin-left: auto;
+}
+
+.cart-total p {
+  font-size: 24px;
+}
+
+.total-amount {
+  font-weight: 700;
+}
+
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+}
+
+.cart-product {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-right: 16px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+  background-color: white;
+  height: 80px;
+}
+
+.cart-product-title {
+  width: 200px;
+}
+
+.product-img-container {
+  display: flex;
+  height: 100%;
+  width: 80px;
+}
+
+.cart-product-img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.cart-price-container {
+  width: 100px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.cart-price-container .price {
+  font-size: 16px;
+}
+
+.cart-price-container .discounted-price {
+  font-size: 16px;
+}
+
+.product-count-container {
+  display: flex;
+}
+
+.increase-product-count,
+.product-count,
+.decrease-product-count {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  min-width: min-content;
+}
+
+.increase-product-count,
+.decrease-product-count {
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+  background-color: var(--light-green);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.increase-product-count:hover,
+.decrease-product-count:hover {
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+  color: white;
+  background-color: var(--blue);
+  cursor: pointer;
+}
+
+.remove-product {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
