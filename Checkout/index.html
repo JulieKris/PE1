@@ -163,29 +163,29 @@
         <div class="form-container">
           <div class="form">
             <h1>Checkout</h1>
-            <label>First name</label>
+            <label for="first-name">First name</label>
             <input type="text" id="first-name" />
             <p class="form-error" id="first-name-error">Error.</p>
-            <label>Last name</label>
+            <label for="last-name">Last name</label>
             <input type="text" id="last-name" />
             <p class="form-error" id="last-name-error">Error.</p>
-            <label>Email</label>
+            <label for="email">Email</label>
             <input type="email" id="email" />
             <p class="form-error" id="email-error">Error.</p>
-            <label>Telephone number</label>
+            <label for="telephone-number">Telephone number</label>
             <input type="tel" id="telephone-number" />
             <p class="form-error" id="telephone-number-error">Error.</p>
-            <label>Streetname</label>
+            <label for="streetname">Streetname</label>
             <input type="text" id="streetname" />
             <p class="form-error" id="streetname-error">Error.</p>
             <div class="postal-city">
               <div class="postal-code">
-                <label>Postal Code</label>
+                <label for="postal-code">Postal Code</label>
                 <input id="postal-code" type="text" />
                 <p class="form-error" id="postal-code-error">Error.</p>
               </div>
               <div class="city">
-                <label>City</label>
+                <label for="city">City</label>
                 <input id="city" type="text" />
                 <p class="form-error" id="city-error">Error.</p>
               </div>
@@ -224,17 +224,17 @@
               Please choose payment option.
             </p>
             <div class="card-payment">
-              <label>Card number</label>
+              <label for="card-number">Card number</label>
               <input id="card-number" type="text" />
               <p class="form-error" id="card-number-error">Error.</p>
               <div class="expdate-cvc">
                 <div class="expiry-date">
-                  <label>Expiry date</label>
+                  <label for="expiry-date">Expiry date</label>
                   <input id="expiry-date" type="text" />
                   <p class="form-error" id="expiry-date-error">Error.</p>
                 </div>
                 <div class="security-number">
-                  <label>CVC</label>
+                  <label for="cvc">CVC</label>
                   <input id="cvc" type="text" />
                   <p class="form-error" id="cvc-error">Error.</p>
                 </div>
@@ -245,7 +245,7 @@
               <input type="tel" id="bipps-number" />
               <p class="form-error" id="bipps-number-error">Error.</p>
             </div>
-            <button id="checkout-button">Checkout</button>
+            <button id="checkout-button" aria-label="Checkout">Checkout</button>
           </div>
         </div>
       </div>
