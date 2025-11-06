@@ -61,7 +61,6 @@ async function fetchProduct() {
     renderProductInfo();
 
     //loaders
-
     try {
       displayProducts(recommendedProducts);
     } catch (error) {
