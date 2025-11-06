@@ -315,7 +315,7 @@ function shareURL() {
 
   shareableURL.setAttribute(
     "value",
-    window.location.origin + "/product/index.html?id=" + id
+    window.location.origin + "/PE1/product/index.html?id=" + id
   );
   copyURL.innerText = "Copy";
 

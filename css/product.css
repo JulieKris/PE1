@@ -119,7 +119,7 @@
 .user-rating-stars-outer {
   width: 160px;
   height: 32px;
-  background-image: url(/Images/Star_1.svg);
+  background-image: url(../Images/Star_1.svg);
   background-size: 32px;
   background-repeat: repeat-x;
 }
@@ -127,7 +127,7 @@
 .user-rating-stars-inner {
   width: 160px;
   height: 32px;
-  background-image: url(/Images/Star_2.svg);
+  background-image: url(../Images/Star_2.svg);
   background-size: 32px;
   background-repeat: repeat-x;
   width: 0%;
@@ -160,7 +160,7 @@
   margin-top: 32px;
   width: 125px;
   height: 25px;
-  background-image: url(/Images/Star_1.svg);
+  background-image: url(../Images/Star_1.svg);
   background-size: 25px;
   background-repeat: repeat-x;
 }
@@ -168,7 +168,7 @@
 .review-stars-inner {
   width: 125px;
   height: 25px;
-  background-image: url(/Images/Star_2.svg);
+  background-image: url(../Images/Star_2.svg);
   background-size: 25px;
   background-repeat: repeat-x;
   width: 0%;
