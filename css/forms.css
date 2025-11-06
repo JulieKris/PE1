@@ -1,5 +1,7 @@
 .form-container {
   margin: auto;
+  margin-top: 32px;
+  margin-bottom: 32px;
   display: flex;
   background-color: var(--light-green);
   border-style: solid;
@@ -114,12 +116,18 @@
   }
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 800px) {
   .form-slides {
     width: min-content;
   }
 
   .form-slides img {
     display: none;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .form input {
+    width: 250px;
   }
 }

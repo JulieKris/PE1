@@ -2,6 +2,8 @@
 <html lang="en">
   <head>
     <meta meta charset="utf-8" />
+    <meta name="theme-color" content="#255EED" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HopShop</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -21,20 +23,20 @@
       sizes="16x16"
       href="/Images/favicon-32x32.png"
     />
-    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="../css/styles.css" />
   </head>
   <body>
     <header>
       <div class="desktop-header">
         <div class="logo">
-          <a href="/index.html"><img src="/Images/Logo.svg" /></a>
+          <a href="../index.html"><img src="../Images/Logo.svg" /></a>
         </div>
         <ul class="navbar">
           <li class="register-link" id="register-link">
-            <a href="/Register/index.html">Register</a>
+            <a href="../Register/index.html">Register</a>
           </li>
           <li class="login-link" id="login-link">
-            <a href="/Login/index.html">Login</a>
+            <a href="../Login/index.html">Login</a>
           </li>
           <li class="profile-link" id="profile-link">Profile</li>
           <li class="cart-icon" id="cart-icon">
@@ -53,30 +55,6 @@
             <div class="cart-count" id="cart-count">0</div>
           </li>
         </ul>
-        <div class="cart-container">
-          <div class="cart">
-            <div class="cart-top">
-              <h2>Cart</h2>
-              <div class="cart-close" id="cart-close">
-                <svg
-                  width="32"
-                  height="32"
-                  viewBox="0 0 32 32"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M32 6.23682L30.8571 1.07898L26.2142 0L16 12L6.57145 5.72205e-05L2.07141 1.07898L0 6.23682L10.5 16.5L0 24.7368L1.57141 30.079L6.57141 32L16 21L24.5714 32L30.0714 30.8772L32 24.7368L21.5 16.5L32 6.23682Z"
-                    fill="#255EED"
-                  />
-                </svg>
-              </div>
-            </div>
-            <div class="cart-items" id="cart-items"></div>
-            <div class="cart-total"></div>
-            <button id="checkout-button">Checkout</button>
-          </div>
-        </div>
         <div class="profile-container">
           <div class="profile" id="profile">
             <div class="profile-top">
@@ -109,13 +87,13 @@
       <div class="mobile-header">
         <div class="mobile-header-top">
           <div class="logo">
-            <a href="/index.html"><img src="/Images/Logo.svg" /></a>
+            <a href="../index.html"><img src="../Images/Logo.svg" /></a>
           </div>
-          <ul class="navbar">
-            <li class="menu-icon">
-              <img src="/Images/menu.png" />
+          <ul class="mobile-navbar">
+            <li class="menu-icon" id="menu-icon">
+              <img src="../Images/menu.png" />
             </li>
-            <li class="cart-icon">
+            <li class="cart-icon" id="mobile-cart-icon">
               <svg
                 width="33"
                 height="30"
@@ -128,19 +106,56 @@
                   fill="black"
                 />
               </svg>
-              <div class="cart-count" id="">0</div>
+              <div class="cart-count" id="mobile-cart-count">0</div>
             </li>
           </ul>
+        </div>
+        <div class="mobile-header-bottom">
+          <ul>
+            <div class="mobile-logged-out">
+              <li><a href="../register/index.html">Register</a></li>
+              <li><a href="../login/index.html">Login</a></li>
+            </div>
+            <div class="mobile-logged-in">
+              <li><a href="">Profile</a></li>
+              <li><a href="">Your orders</a></li>
+              <li><a href="">Wishlist</a></li>
+              <li><a href="">Settings</a></li>
+              <li id="mobile-logout"><a href="">Logout</a></li>
+            </div>
+          </ul>
+        </div>
+      </div>
+      <div class="cart-container">
+        <div class="cart">
+          <div class="cart-top">
+            <h2>Cart</h2>
+            <div class="cart-close" id="cart-close">
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 32 32"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M32 6.23682L30.8571 1.07898L26.2142 0L16 12L6.57145 5.72205e-05L2.07141 1.07898L0 6.23682L10.5 16.5L0 24.7368L1.57141 30.079L6.57141 32L16 21L24.5714 32L30.0714 30.8772L32 24.7368L21.5 16.5L32 6.23682Z"
+                  fill="#255EED"
+                />
+              </svg>
+            </div>
+          </div>
+          <div class="cart-items" id="cart-items"></div>
+          <div class="cart-total"></div>
+          <button id="checkout-button">Checkout</button>
         </div>
       </div>
     </header>
 
     <main>
       <div class="product-container" id="product-container"></div>
-      <div class="other-products" id="other-products">
-        <h2>Other products you might be interested in</h2>
-        <div class="product-cards" id="product-cards"></div>
-      </div>
+      <h2>Other products you might like</h2>
+      <div class="product-cards" id="product-cards"></div>
     </main>
 
     <footer>
@@ -169,5 +184,5 @@
       </div>
     </footer>
   </body>
-  <script src="/javascript/product.js" type="module"></script>
+  <script src="../javascript/product.js" type="module"></script>
 </html>

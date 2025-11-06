@@ -65,17 +65,55 @@
 .mobile-header-top {
   display: flex;
   justify-content: space-between;
-  padding-left: 32px;
-  padding-right: 32px;
+  padding-left: 16px;
+  padding-right: 16px;
   width: 100%;
-  background-color: aqua;
 }
 
 .mobile-header-top .logo img {
   height: 60px;
 }
 
-@media only screen and (max-width: 1000px) {
+.mobile-navbar {
+  font-family: var(--base-font);
+  font-weight: 800;
+  font-size: 24px;
+  color: var(--blue);
+  list-style: none;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.mobile-header-bottom {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  height: 0px;
+  overflow-y: hidden;
+  transition: 0.5s;
+}
+
+.mobile-logged-out {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  gap: 8px;
+  list-style: none;
+  padding: 16px;
+}
+
+.mobile-logged-in {
+  width: 100%;
+  display: none;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 8px;
+  list-style: none;
+  padding: 16px;
+}
+
+@media only screen and (max-width: 750px) {
   .mobile-header {
     display: block;
   }

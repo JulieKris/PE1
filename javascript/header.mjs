@@ -1,13 +1,14 @@
 export function cartFunctions() {
   const open = document.querySelector("#cart-icon");
+  const mobileCart = document.querySelector("#mobile-cart-icon");
   const close = document.querySelector("#cart-close");
 
   open.addEventListener("click", function openMenu() {
     document.querySelector(".cart-container").style.width = "600px";
   });
 
-  close.addEventListener("click", function closeMenu() {
-    document.querySelector(".cart-container").style.width = "0px";
+  mobileCart.addEventListener("click", function openCart() {
+    document.querySelector(".cart-container").style.width = "100vw";
   });
 
   close.addEventListener("click", function closeMenu() {
@@ -28,6 +29,16 @@ export function cartFunctions() {
 }
 
 export function profile() {
+  const mobileMenu = document.querySelector("#menu-icon");
+
+  mobileMenu.addEventListener("click", function openMenu() {
+    if (document.querySelector(".mobile-header-bottom").style.height == "0px") {
+      document.querySelector(".mobile-header-bottom").style.height = "80px";
+    } else {
+      document.querySelector(".mobile-header-bottom").style.height = "0px";
+    }
+  });
+
   if (JSON.parse(localStorage.getItem("login")) == true) {
     document
       .querySelector("#profile-link")
@@ -37,6 +48,13 @@ export function profile() {
 
     document
       .querySelector("#logout-button")
+      .addEventListener("click", function logout() {
+        localStorage.setItem("login", "false");
+        window.location.href = "../index.html";
+      });
+
+    document
+      .querySelector("#mobile-logout")
       .addEventListener("click", function logout() {
         localStorage.setItem("login", "false");
         window.location.href = "../index.html";
@@ -60,6 +78,7 @@ export function updateCartCount() {
   newCartCount = individualProductCount.reduce((a, b) => a + b, 0);
 
   document.querySelector("#cart-count").innerText = newCartCount;
+  document.querySelector("#mobile-cart-count").innerText = newCartCount;
 }
 
 export function displayLoggedIn() {
@@ -67,9 +86,15 @@ export function displayLoggedIn() {
     document.querySelector("#profile-link").style.display = "block";
     document.querySelector("#register-link").style.display = "none";
     document.querySelector("#login-link").style.display = "none";
+
+    document.querySelector(".mobile-logged-in").style.display = "flex";
+    document.querySelector(".mobile-logged-out").style.display = "none";
   } else {
     document.querySelector("#profile-link").style.display = "none";
     document.querySelector("#register-link").style.display = "block";
     document.querySelector("#login-link").style.display = "block";
+
+    document.querySelector(".mobile-logged-in").style.display = "none";
+    document.querySelector(".mobile-logged-out").style.display = "flex";
   }
 }
