@@ -12,7 +12,7 @@ export function displayProducts(products) {
     productTitle.textContent = product.title;
     productPrice.textContent = product.price + " kr";
     productDiscountedPrice.textContent = product.discountedPrice + " kr";
-    anchor.setAttribute("href", `product/index.html?id=${product.id}`);
+    anchor.href = `product/index.html`;
 
     productCard.className = "product-card";
     productImg.className = "product-img";

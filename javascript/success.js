@@ -25,7 +25,9 @@ successMessage.innerHTML =
   "<br/>" +
   " An email detailing your order will be sent promptly.";
 
-document.querySelector("#checkout-success").appendChild(successMessage);
+if (window.location.href.includes("checkout-success")) {
+  document.querySelector("#checkout-success").appendChild(successMessage);
+}
 
 profile();
 cartFunctions();
