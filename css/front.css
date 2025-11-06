@@ -61,12 +61,14 @@
   justify-content: space-between;
   overflow: hidden;
   scroll-snap-align: start;
+  position: relative;
 }
 
 .carousel-text {
   display: flex;
   flex-direction: column;
   z-index: 1;
+  width: 50%;
 }
 
 .carousel-image-container {
@@ -75,6 +77,7 @@
   right: 0;
   z-index: 0;
   align-self: center;
+  position: absolute;
 }
 
 .carousel-slide img {
@@ -268,6 +271,7 @@
 
   .carousel-image-container {
     filter: drop-shadow(75px -50px 0px #255eed);
+    right: 100px;
   }
 
   .carousel-slide img {
@@ -286,26 +290,5 @@
 
   .product-card img {
     height: 200px;
-  }
-}
-
-@media only screen and (max-width: 500px) {
-  .carousel {
-    display: none;
-  }
-
-  .product-cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    justify-content: space-around;
-  }
-
-  .product-card {
-    width: 150px;
-  }
-
-  .product-card img {
-    height: 150px;
   }
 }

@@ -66,6 +66,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: nowrap;
   gap: 16px;
   padding-right: 16px;
   border-style: solid;
@@ -108,6 +109,8 @@
 
 .product-count-container {
   display: flex;
+  flex-direction: row;
+  gap: 4px;
 }
 
 .increase-product-count,
@@ -146,6 +149,14 @@
 }
 
 @media only screen and (max-width: 600px) {
+  .cart {
+    padding: 16px;
+  }
+
+  .cart-product {
+    flex-wrap: nowrap;
+    height: 100px;
+  }
   .product-img-container {
     display: none;
   }
@@ -156,5 +167,10 @@
 
   .cart-price-container {
     width: 220px;
+  }
+
+  .product-count-container {
+    display: flex;
+    flex-direction: column-reverse;
   }
 }

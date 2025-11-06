@@ -3,7 +3,7 @@
   flex-direction: row;
   gap: 64px;
   margin: auto;
-  width: min-content;
+  max-width: 1200px;
 }
 
 .checkout-cart {
@@ -13,6 +13,7 @@
   gap: 16px;
   padding: 32px;
   width: 100%;
+  min-width: 300px;
   background-color: var(--light-green);
   border-style: solid;
   border-color: black;
@@ -36,6 +37,12 @@
 }
 
 .checkout .form-container {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  width: 100%;
+}
+
+.checkout .form {
   width: 100%;
 }
 
@@ -125,5 +132,10 @@
 @media only screen and (max-width: 1000px) {
   .checkout {
     flex-direction: column;
+    gap: 32px;
+  }
+
+  .checkout-cart {
+    padding: 16px;
   }
 }
