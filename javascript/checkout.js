@@ -147,11 +147,9 @@ document
                             document.querySelector("#cvc-error").style.display =
                               "block";
                           } else {
-                            localStorage.setItem("customer", firstName.value);
-                            window.location.replace(
-                              window.location.origin +
-                                "/checkout-success/index.html"
-                            );
+                            sessionStorage.setItem("customer", firstName.value);
+                            window.location.href =
+                              "../checkout-success/index.html";
                           }
                         }
                       }

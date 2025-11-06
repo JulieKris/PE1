@@ -153,4 +153,8 @@
   .cart-product-title {
     margin-left: 16px;
   }
+
+  .cart-price-container {
+    width: 220px;
+  }
 }

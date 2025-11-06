@@ -104,6 +104,7 @@ document.querySelector("#register-button").addEventListener("click", (e) => {
             };
 
             localStorage.setItem("registeredUser", JSON.stringify(user));
+            window.location.href = "../registration-success/index.html";
           }
         }
       }

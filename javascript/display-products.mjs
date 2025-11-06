@@ -12,8 +12,7 @@ export function displayProducts(products) {
     productTitle.textContent = product.title;
     productPrice.textContent = product.price + " kr";
     productDiscountedPrice.textContent = product.discountedPrice + " kr";
-    anchor.href =
-      window.location.origin + `/product/index.html?id=${product.id}`;
+    anchor.href = `../product/index.html?id=${product.id}`;
 
     productCard.className = "product-card";
     productImg.className = "product-img";

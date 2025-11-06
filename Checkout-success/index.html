@@ -4,7 +4,7 @@
     <meta meta charset="utf-8" />
     <meta name="theme-color" content="#255EED" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Register | HopShop</title>
+    <title>Checkout | HopShop</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -23,7 +23,7 @@
       sizes="16x16"
       href="../Images/favicon-32x32.png"
     />
-    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
   </head>
   <body>
     <header>
@@ -153,30 +153,23 @@
     </header>
 
     <main>
-      <div class="form-container">
-        <div class="form-slides" id="form-slides"></div>
-        <div class="form">
-          <h1>Register</h1>
-          <label>Username</label>
-          <input type="text" id="username" />
-          <p class="form-error" id="username-error">Something went wrong.</p>
-          <label>Email</label>
-          <input type="email" id="email" />
-          <p class="form-error" id="email-error">Something went wrong.</p>
-          <label>Password</label>
-          <input type="password" id="password" />
-          <p class="form-error" id="password-error">Something went wrong.</p>
-          <label>Confirm password</label>
-          <input type="password" id="confirm-password" />
-          <p class="form-error" id="confirm-password-error">
-            Something went wrong.
-          </p>
-          <button id="register-button">Register</button>
-          <div class="register-bottom-txt">
-            <p>Already have an account?</p>
-            <a href="../Login/index.html">Login</a>
-          </div>
+      <div class="success">
+        <div class="close-success" id="close-success">
+          <svg
+            width="32"
+            height="32"
+            viewBox="0 0 32 32"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M32 6.23682L30.8571 1.07898L26.2142 0L16 12L6.57145 5.72205e-05L2.07141 1.07898L0 6.23682L10.5 16.5L0 24.7368L1.57141 30.079L6.57141 32L16 21L24.5714 32L30.0714 30.8772L32 24.7368L21.5 16.5L32 6.23682Z"
+              fill="#255EED"
+            />
+          </svg>
         </div>
+        <h1>Your order has been received</h1>
+        <p>An email detailing your order will be sent promptly.</p>
       </div>
     </main>
 
@@ -206,5 +199,5 @@
       </div>
     </footer>
   </body>
-  <script src="../javascript/register.js" type="module"></script>
+  <script src="../javascript/success.js" type="module"></script>
 </html>

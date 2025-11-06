@@ -1,0 +1,33 @@
+.success {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 32px;
+  width: 100%;
+  max-width: 800px;
+  height: 50vh;
+  padding: 32px;
+  background-color: var(--light-green);
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+  text-align: center;
+  margin: auto;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.close-success {
+  top: 32px;
+  right: 32px;
+  position: absolute;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  main {
+    margin-top: 32px;
+    margin-bottom: 32px;
+  }
+}

@@ -15,15 +15,22 @@ export function cartFunctions() {
     document.querySelector(".cart-container").style.width = "0px";
   });
 
+  //Checks if you're logged in and have items in your cart before you can go to checkout.
   document
     .querySelector("#checkout-button")
     .addEventListener("click", function goToCheckout() {
       if (JSON.parse(localStorage.getItem("login")) == false) {
-        alert("Please login first.");
+        alert("Please login before proceeding to checkout.");
       } else {
-        window.location.replace(
-          window.location.origin + "/checkout/index.html"
-        );
+        if (JSON.parse(localStorage.getItem("cart")).length == 0) {
+          alert(
+            "Please add an item to your cart before proceeding to checkout."
+          );
+        } else {
+          window.location.replace(
+            window.location.origin + "/checkout/index.html"
+          );
+        }
       }
     });
 }
@@ -68,6 +75,7 @@ export function profile() {
   }
 }
 
+//updates the cart count in the header.
 export function updateCartCount() {
   let individualProductCount = [];
   let newCartCount = JSON.parse(localStorage.getItem("cart"));
@@ -81,6 +89,7 @@ export function updateCartCount() {
   document.querySelector("#mobile-cart-count").innerText = newCartCount;
 }
 
+//changes which links are displayed in the header whether you are logged in or not.
 export function displayLoggedIn() {
   if (JSON.parse(localStorage.getItem("login")) == true) {
     document.querySelector("#profile-link").style.display = "block";
