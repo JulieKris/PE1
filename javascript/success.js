@@ -31,5 +31,12 @@ profile();
 cartFunctions();
 displayLoggedIn();
 updateCartCount();
-displayCartItems(cartItems);
 displayCartTotal();
+
+try {
+  displayCartItems(cartItems);
+} catch (error) {
+  document.querySelector(".cart-error-msg").style.display = "block";
+} finally {
+  document.querySelector(".cart-loader").style.display = "none";
+}

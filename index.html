@@ -144,6 +144,8 @@
               </svg>
             </div>
           </div>
+          <div class="cart-loader"></div>
+          <p class="cart-error-msg">Failed to load cart.</p>
           <div class="cart-items" id="cart-items"></div>
           <div class="cart-total"></div>
           <button id="checkout-button">Checkout</button>
@@ -152,13 +154,18 @@
     </header>
 
     <main>
-      <div class="carousel" id="carousel"></div>
+      <div class="carousel" id="carousel">
+        <div class="loader"></div>
+        <p class="error-msg">Failed to load carousel.</p>
+      </div>
       <div class="new-products">
         <div class="new-products-heading">
           <h1>New arrivals</h1>
           <p id="open-filters">+ Filters</p>
         </div>
         <div class="filters" id="filters"></div>
+        <div class="products-loader"></div>
+        <div class="products-error-msg">Failed to load products.</div>
         <div class="product-cards" id="product-cards"></div>
       </div>
     </main>

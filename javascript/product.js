@@ -22,14 +22,8 @@ let reviews;
 let id;
 
 let allProducts = [];
-let randomProducts = [];
 
 let cartItems = JSON.parse(localStorage.getItem("cart"));
-
-const ids = cartItems.map(({ id }) => id);
-let noDuplicateItems = cartItems.filter(
-  ({ id }, index) => !ids.includes(id, index + 1)
-);
 
 if (localStorage.getItem("cart") == null) {
   localStorage.setItem("cart", "[]");
@@ -65,12 +59,30 @@ async function fetchProduct() {
     recommendedProducts = recommendedProducts.slice(0, 8);
 
     renderProductInfo();
-    displayProducts(recommendedProducts);
-    displayCartItems(noDuplicateItems);
+
+    //loaders
+
+    try {
+      displayProducts(recommendedProducts);
+    } catch (error) {
+    } finally {
+      document.querySelector(".products-loader").style.display = "none";
+    }
+
+    try {
+      displayCartItems(cartItems);
+    } catch (error) {
+      document.querySelector(".cart-error-msg").style.display = "block";
+    } finally {
+      document.querySelector(".cart-loader").style.display = "none";
+    }
+
     addToCart();
     shareURL();
   } catch (error) {
     console.error("Error fetching product:", error);
+  } finally {
+    document.querySelector(".loader").style.display = "none";
   }
 }
 

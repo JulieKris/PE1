@@ -7,7 +7,14 @@ displayLoggedIn();
 profile();
 updateCartCount();
 displayCartTotal();
-displayCartItems(cartItems);
+
+try {
+  displayCartItems(cartItems);
+} catch (error) {
+  document.querySelector(".cart-error-msg").style.display = "block";
+} finally {
+  document.querySelector(".cart-loader").style.display = "none";
+}
 
 const firstName = document.querySelector("#first-name");
 const lastName = document.querySelector("#last-name");

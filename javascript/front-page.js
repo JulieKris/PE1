@@ -34,12 +34,21 @@ async function fetchProducts() {
     allProducts = data.data;
     carouselProducts = allProducts.slice(0, 3);
 
-    displayCarouselItmes(carouselProducts);
+    try {
+      displayCarouselItmes(carouselProducts);
+    } catch (error) {
+      document.querySelector(".error-msg").style.display = "block";
+    }
+
     getProductTags(allProducts);
     productFilter(productTags);
     openAndCloseFilters();
   } catch (error) {
-    console.error("Error fetching products:", error);
+    document.querySelector(".error-msg").style.display = "block";
+    document.querySelector(".products-error-msg").style.display = "block";
+  } finally {
+    document.querySelector(".loader").style.display = "none";
+    document.querySelector(".products-loader").style.display = "none";
   }
 }
 
@@ -50,7 +59,14 @@ cartFunctions();
 updateCartCount();
 displayCartTotal();
 updateCartTotal();
-displayCartItems(cartItems);
+
+try {
+  displayCartItems(cartItems);
+} catch (error) {
+  document.querySelector(".cart-error-msg").style.display = "block";
+} finally {
+  document.querySelector(".cart-loader").style.display = "none";
+}
 
 function getProductTags() {
   allProducts.forEach((product) => {
@@ -110,6 +126,13 @@ function productFilter(tags) {
     });
   });
   if (selectedTag.length == 0) {
-    displayProducts(allProducts);
+    document.querySelector(".products-loader").style.display = "block";
+    try {
+      displayProducts(allProducts);
+    } catch (error) {
+      document.querySelector(".products-error-msg").style.display = "block";
+    } finally {
+      document.querySelector(".products-loader").style.display = "none";
+    }
   }
 }

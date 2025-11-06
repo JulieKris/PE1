@@ -13,19 +13,15 @@ let allProducts = [];
 let cartItems = JSON.parse(localStorage.getItem("cart"));
 
 async function fetchProducts() {
-  try {
-    const response = await fetch("https://v2.api.noroff.dev/online-shop/");
-    const data = await response.json();
+  const response = await fetch("https://v2.api.noroff.dev/online-shop/");
+  const data = await response.json();
 
-    allProducts = data.data;
+  allProducts = data.data;
 
-    let randomProducts = allProducts.sort(() => Math.random() - 0.5);
-    let slideImages = randomProducts.slice(0, 5);
+  let randomProducts = allProducts.sort(() => Math.random() - 0.5);
+  let slideImages = randomProducts.slice(0, 5);
 
-    createSlides(slideImages);
-  } catch (error) {
-    console.error("Error fetching products:", error);
-  }
+  createSlides(slideImages);
 }
 
 fetchProducts();
@@ -48,7 +44,14 @@ profile();
 cartFunctions();
 updateCartCount();
 displayCartTotal();
-displayCartItems(cartItems);
+
+try {
+  displayCartItems(cartItems);
+} catch (error) {
+  document.querySelector(".cart-error-msg").style.display = "block";
+} finally {
+  document.querySelector(".cart-loader").style.display = "none";
+}
 
 let username = document.querySelector("#username");
 let password = document.querySelector("#password");
