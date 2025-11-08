@@ -86,7 +86,7 @@ export function displayCartItems(products) {
     cartProduct.appendChild(removeProductButton);
 
     //display the cart items on the checkout page instead of the sidebar
-    if (window.location.href.includes("checkout/")) {
+    if (window.location.href.includes("heckout/")) {
       document.querySelector("#checkout-cart-items").appendChild(cartProduct);
     } else {
       document.querySelector("#cart-items").appendChild(cartProduct);
@@ -122,7 +122,7 @@ export function displayCartItems(products) {
         emptyCartMessage.className = "empty-cart";
         document.querySelector(".cart-total").style.display = "none";
 
-        if (window.location.href.includes("checkout/")) {
+        if (window.location.href.includes("heckout/")) {
           document
             .querySelector("#checkout-cart-items")
             .appendChild(emptyCartMessage);
@@ -259,7 +259,7 @@ export function displayCartTotal() {
   document.querySelector(".cart-total").appendChild(totalText);
   document.querySelector(".cart-total").appendChild(totalAmount);
 
-  if (window.location.href.includes("checkout/")) {
+  if (window.location.href.includes("heckout/")) {
     document.querySelector("#checkout-cart-total").appendChild(totalText);
     document.querySelector("#checkout-cart-total").appendChild(totalAmount);
   }

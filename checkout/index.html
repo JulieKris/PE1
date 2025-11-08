@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta meta charset="utf-8" />
+    <meta name="theme-color" content="#255EED" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout | HopShop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Fruktur:ital@0;1&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../Images/favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../Images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="desktop-header">
+        <div class="logo">
+          <a href="../index.html"><img src="../Images/Logo.svg" /></a>
+        </div>
+        <nav>
+          <ul class="navbar">
+            <li class="register-link" id="register-link">
+              <a href="../Register/index.html">Register</a>
+            </li>
+            <li class="login-link" id="login-link">
+              <a href="../Login/index.html">Login</a>
+            </li>
+            <li class="profile-link" id="profile-link">Profile</li>
+            <li class="cart-icon" id="cart-icon">
+              <svg
+                width="33"
+                height="30"
+                viewBox="0 0 44 40"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M13.2 31.9087C10.78 31.9087 8.822 33.6968 8.822 35.8821C8.822 38.0675 10.78 39.8555 13.2 39.8555C15.62 39.8555 17.6 38.0675 17.6 35.8821C17.6 33.6968 15.62 31.9087 13.2 31.9087ZM0 0.121674V4.09506H4.4L12.32 19.1741L9.35 24.0414C8.998 24.5977 8.8 25.2533 8.8 25.9487C8.8 28.134 10.78 29.9221 13.2 29.9221H39.6V25.9487H14.124C13.816 25.9487 13.574 25.7301 13.574 25.452L13.64 25.2136L15.62 21.9753H32.01C33.66 21.9753 35.112 21.1607 35.86 19.929L43.736 7.03536C43.912 6.75723 44 6.41949 44 6.08175C44 4.98907 43.01 4.09506 41.8 4.09506H9.262L7.194 0.121674H0ZM35.2 31.9087C32.78 31.9087 30.822 33.6968 30.822 35.8821C30.822 38.0675 32.78 39.8555 35.2 39.8555C37.62 39.8555 39.6 38.0675 39.6 35.8821C39.6 33.6968 37.62 31.9087 35.2 31.9087Z"
+                  fill="black"
+                />
+              </svg>
+              <div class="cart-count" id="cart-count">0</div>
+            </li>
+          </ul>
+        </nav>
+        <div class="profile-container">
+          <div class="profile" id="profile">
+            <div class="profile-top">
+              <h2>Profile</h2>
+              <div class="profile-close" id="profile-close">
+                <svg
+                  width="32"
+                  height="32"
+                  viewBox="0 0 32 32"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M32 6.23682L30.8571 1.07898L26.2142 0L16 12L6.57145 5.72205e-05L2.07141 1.07898L0 6.23682L10.5 16.5L0 24.7368L1.57141 30.079L6.57141 32L16 21L24.5714 32L30.0714 30.8772L32 24.7368L21.5 16.5L32 6.23682Z"
+                    fill="#255EED"
+                  />
+                </svg>
+              </div>
+            </div>
+            <nav>
+              <ul>
+                <li><a href="">Your orders</a></li>
+                <li><a href="">Wishlist</a></li>
+                <li><a href="">Settings</a></li>
+              </ul>
+              <button id="logout-button">Logout</button>
+            </nav>
+          </div>
+        </div>
+      </div>
+      <div class="mobile-header">
+        <div class="mobile-header-top">
+          <div class="logo">
+            <a href="../index.html"><img src="../Images/Logo.svg" /></a>
+          </div>
+          <nav>
+            <ul class="mobile-navbar">
+              <li class="menu-icon" id="menu-icon">
+                <img src="../Images/menu.png" />
+              </li>
+              <li class="cart-icon" id="mobile-cart-icon">
+                <svg
+                  width="33"
+                  height="30"
+                  viewBox="0 0 44 40"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M13.2 31.9087C10.78 31.9087 8.822 33.6968 8.822 35.8821C8.822 38.0675 10.78 39.8555 13.2 39.8555C15.62 39.8555 17.6 38.0675 17.6 35.8821C17.6 33.6968 15.62 31.9087 13.2 31.9087ZM0 0.121674V4.09506H4.4L12.32 19.1741L9.35 24.0414C8.998 24.5977 8.8 25.2533 8.8 25.9487C8.8 28.134 10.78 29.9221 13.2 29.9221H39.6V25.9487H14.124C13.816 25.9487 13.574 25.7301 13.574 25.452L13.64 25.2136L15.62 21.9753H32.01C33.66 21.9753 35.112 21.1607 35.86 19.929L43.736 7.03536C43.912 6.75723 44 6.41949 44 6.08175C44 4.98907 43.01 4.09506 41.8 4.09506H9.262L7.194 0.121674H0ZM35.2 31.9087C32.78 31.9087 30.822 33.6968 30.822 35.8821C30.822 38.0675 32.78 39.8555 35.2 39.8555C37.62 39.8555 39.6 38.0675 39.6 35.8821C39.6 33.6968 37.62 31.9087 35.2 31.9087Z"
+                    fill="black"
+                  />
+                </svg>
+                <div class="cart-count" id="mobile-cart-count">0</div>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="mobile-header-bottom">
+          <ul>
+            <nav class="mobile-logged-out">
+              <li><a href="../Register/index.html">Register</a></li>
+              <li><a href="../Login/index.html">Login</a></li>
+            </nav>
+            <nav class="mobile-logged-in">
+              <li><a href="">Profile</a></li>
+              <li><a href="">Your orders</a></li>
+              <li><a href="">Wishlist</a></li>
+              <li><a href="">Settings</a></li>
+              <li id="mobile-logout"><a href="">Logout</a></li>
+            </nav>
+          </ul>
+        </div>
+      </div>
+      <div class="cart-container">
+        <div class="cart">
+          <div class="cart-top">
+            <h2>Cart</h2>
+            <div class="cart-close" id="cart-close">
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 32 32"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M32 6.23682L30.8571 1.07898L26.2142 0L16 12L6.57145 5.72205e-05L2.07141 1.07898L0 6.23682L10.5 16.5L0 24.7368L1.57141 30.079L6.57141 32L16 21L24.5714 32L30.0714 30.8772L32 24.7368L21.5 16.5L32 6.23682Z"
+                  fill="#255EED"
+                />
+              </svg>
+            </div>
+          </div>
+          <div class="cart-items"></div>
+          <div class="cart-total"></div>
+          <button>Checkout</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="checkout" id="checkout">
+        <div class="checkout-cart" id="checkout-cart">
+          <h2>Cart</h2>
+          <div class="cart-loader"></div>
+          <p class="cart-error-msg">Failed to load cart.</p>
+          <div class="cart-items" id="checkout-cart-items"></div>
+          <div class="checkout-cart-total" id="checkout-cart-total"></div>
+        </div>
+        <div class="form-container">
+          <div class="form">
+            <h1>Checkout</h1>
+            <label for="first-name">First name</label>
+            <input type="text" id="first-name" />
+            <p class="form-error" id="first-name-error">Error.</p>
+            <label for="last-name">Last name</label>
+            <input type="text" id="last-name" />
+            <p class="form-error" id="last-name-error">Error.</p>
+            <label for="email">Email</label>
+            <input type="email" id="email" />
+            <p class="form-error" id="email-error">Error.</p>
+            <label for="telephone-number">Telephone number</label>
+            <input type="tel" id="telephone-number" />
+            <p class="form-error" id="telephone-number-error">Error.</p>
+            <label for="streetname">Streetname</label>
+            <input type="text" id="streetname" />
+            <p class="form-error" id="streetname-error">Error.</p>
+            <div class="postal-city">
+              <div class="postal-code">
+                <label for="postal-code">Postal Code</label>
+                <input id="postal-code" type="text" />
+                <p class="form-error" id="postal-code-error">Error.</p>
+              </div>
+              <div class="city">
+                <label for="city">City</label>
+                <input id="city" type="text" />
+                <p class="form-error" id="city-error">Error.</p>
+              </div>
+            </div>
+            <h2>Payment Options</h2>
+            <div class="payment-options">
+              <div class="payment-option">
+                <input
+                  type="radio"
+                  id="misa"
+                  name="payment-options"
+                  value="misa"
+                />
+                <img src="../Images/misa-logo.png" />
+              </div>
+              <div class="payment-option">
+                <input
+                  type="radio"
+                  id="fastercard"
+                  name="payment-options"
+                  value="fastercard"
+                />
+                <img src="../Images/fastercard-logo.png" />
+              </div>
+              <div class="payment-option">
+                <input
+                  type="radio"
+                  id="bipps"
+                  name="payment-options"
+                  value="bipps"
+                />
+                <img src="../Images/bipps-logo.png" />
+              </div>
+            </div>
+            <p class="form-error" id="payment-options-error">
+              Please choose payment option.
+            </p>
+            <div class="card-payment">
+              <label for="card-number">Card number</label>
+              <input id="card-number" type="text" />
+              <p class="form-error" id="card-number-error">Error.</p>
+              <div class="expdate-cvc">
+                <div class="expiry-date">
+                  <label for="expiry-date">Expiry date</label>
+                  <input id="expiry-date" type="text" />
+                  <p class="form-error" id="expiry-date-error">Error.</p>
+                </div>
+                <div class="security-number">
+                  <label for="cvc">CVC</label>
+                  <input id="cvc" type="text" />
+                  <p class="form-error" id="cvc-error">Error.</p>
+                </div>
+              </div>
+            </div>
+            <div class="bipps-payment">
+              <label for="bipps-number">Telephone number</label>
+              <input type="tel" id="bipps-number" />
+              <p class="form-error" id="bipps-number-error">Error.</p>
+            </div>
+            <button id="checkout-button">Checkout</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <nav>
+        <div class="footer-links">
+          <ul>
+            <li><a href="">Orders</a></li>
+            <li><a href="">Returns</a></li>
+            <li><a href="">Guarantee</a></li>
+            <li><a href="">Shipping</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <ul>
+            <li><a href="">Contact</a></li>
+            <li><a href="">Jobs</a></li>
+            <li><a href="">Press</a></li>
+            <li><a href="">Relations</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <ul>
+            <li><a href="">Privacy</a></li>
+            <li><a href="">Terms</a></li>
+            <li><a href="">Security</a></li>
+          </ul>
+        </div>
+      </nav>
+    </footer>
+  </body>
+  <script src="../javascript/checkout.js" type="module"></script>
+</html>
