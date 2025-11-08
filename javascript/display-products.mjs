@@ -13,6 +13,7 @@ export function displayProducts(products) {
     productPrice.textContent = product.price + " kr";
     productDiscountedPrice.textContent = product.discountedPrice + " kr";
 
+    //because github links are sensitive use different links depending on which page you're on
     if (window.location.href.includes("product")) {
       anchor.href = `../product/index.html?id=${product.id}`;
     } else {

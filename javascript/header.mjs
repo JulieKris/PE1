@@ -27,9 +27,7 @@ export function cartFunctions() {
             "Please add an item to your cart before proceeding to checkout."
           );
         } else {
-          window.location.replace(
-            window.location.origin + "/checkout/index.html"
-          );
+          window.location.href = window.location.origin + "/PE1";
         }
       }
     });
@@ -38,6 +36,7 @@ export function cartFunctions() {
 export function profile() {
   const mobileMenu = document.querySelector("#menu-icon");
 
+  //opens the mobile menu
   mobileMenu.addEventListener("click", function openMenu() {
     if (document.querySelector(".mobile-header-bottom").style.height == "0px") {
       document.querySelector(".mobile-header-bottom").style.height = "80px";
@@ -46,6 +45,7 @@ export function profile() {
     }
   });
 
+  //changes which links are displayed in the header whether you are logged in or not
   if (JSON.parse(localStorage.getItem("login")) == true) {
     document
       .querySelector("#profile-link")
@@ -57,14 +57,14 @@ export function profile() {
       .querySelector("#logout-button")
       .addEventListener("click", function logout() {
         localStorage.setItem("login", "false");
-        window.location.href = "../index.html";
+        window.location.reload();
       });
 
     document
       .querySelector("#mobile-logout")
       .addEventListener("click", function logout() {
         localStorage.setItem("login", "false");
-        window.location.href = "../index.html";
+        window.location.reload();
       });
 
     document

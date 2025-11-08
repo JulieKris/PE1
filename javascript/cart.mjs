@@ -86,10 +86,12 @@ export function displayCartItems(products) {
     productCountContainer.appendChild(increaseProductCount);
     cartProduct.appendChild(removeProductButton);
 
+    //display the cart items on the checkout page instead of the sidebar
     if (window.location.href.includes("checkout/")) {
       document.querySelector("#checkout-cart-items").appendChild(cartProduct);
     }
 
+    //Display discounted price if there's a discount
     if (cartProductPrice.innerText !== cartProductDiscPrice.innerText) {
       cartProductDiscPrice.style.display = "block";
       cartProductPrice.style.textDecoration = "line-through";

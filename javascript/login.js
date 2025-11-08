@@ -28,6 +28,7 @@ fetchProducts();
 
 var number = 0;
 
+//adds images to the form container
 function createSlides(products) {
   products.forEach((product) => {
     const slideImage = document.createElement("img");

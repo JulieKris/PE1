@@ -18,7 +18,7 @@ export function displayCarouselItmes(products) {
 
     carouselHeader.innerText = product.title;
     carouselDescription.innerText = product.description;
-    anchor.href = `/product/index.html?id=${product.id}`;
+    anchor.href = `product/index.html?id=${product.id}`;
     carouselButton.innerText = "See more";
     carouselImg.setAttribute("src", product.image.url);
 

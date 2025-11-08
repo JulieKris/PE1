@@ -132,16 +132,6 @@
   transition: 0.2s;
 }
 
-.increase-product-count:hover,
-.decrease-product-count:hover {
-  border-style: solid;
-  border-width: 1px;
-  border-color: black;
-  color: white;
-  background-color: var(--blue);
-  cursor: pointer;
-}
-
 .remove-product {
   display: flex;
   justify-content: center;

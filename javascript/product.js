@@ -52,6 +52,7 @@ async function fetchProduct() {
     rating = productData.data.rating;
     reviews = productData.data.reviews;
 
+    //make an array of random products that excludes the current product.
     let recommendedProducts = allProducts.sort(() => Math.random() - 0.5);
     recommendedProducts = recommendedProducts.filter(
       (product) => product.title !== productData.data.title
@@ -323,8 +324,7 @@ function shareURL() {
   shareURLcontainer.appendChild(shareableURL);
   shareURLcontainer.appendChild(copyURL);
 
-  console.log(window.location.origin);
-
+  //open and close share container
   let share = false;
 
   document
@@ -345,7 +345,6 @@ function shareURL() {
 
     navigator.clipboard.writeText(shareableURL.value);
 
-    //tooltip saying you copied the text
     alert("Link copied!");
   });
 }
