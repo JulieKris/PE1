@@ -17,7 +17,7 @@ export function displayCartItems(products) {
     document.querySelector(".cart-total").style.display = "none";
     document.querySelector("#cart-items").appendChild(emptyCartMessage);
 
-    if (window.location.href.includes("checkout/")) {
+    if (window.location.href.includes("heckout/")) {
       document
         .querySelector("#checkout-cart-items")
         .appendChild(emptyCartMessage);

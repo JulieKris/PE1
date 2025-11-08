@@ -25,6 +25,7 @@
 
 .navbar a,
 .navbar li {
+  color: var(--blue);
   text-decoration: none;
   transition: 0.2s;
   font-size: 24px;
