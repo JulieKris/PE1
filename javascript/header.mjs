@@ -27,7 +27,11 @@ export function cartFunctions() {
             "Please add an item to your cart before proceeding to checkout."
           );
         } else {
-          window.location.href = "../checkout/index.html";
+          if (window.location.href.includes("PE1/index.html")) {
+            window.location.href = "checkout/index.html";
+          } else {
+            window.location.href = "../checkout/index.html";
+          }
         }
       }
     });
