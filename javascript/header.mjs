@@ -28,7 +28,7 @@ export function cartFunctions() {
           );
         } else {
           if (window.location.href.includes("PE1/index.html")) {
-            window.location.href = "checkout/index.html";
+            window.location.href = "/checkout/index.html";
           } else {
             window.location.href = "../checkout/index.html";
           }
