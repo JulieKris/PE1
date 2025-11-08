@@ -41,6 +41,10 @@
   color: var(--blue);
 }
 
+.active a {
+  text-decoration: underline;
+}
+
 .cart-icon {
   position: relative;
   cursor: pointer;
