@@ -118,7 +118,7 @@ document
                         sessionStorage.setItem("customer", firstName.value);
                         window.location.replace(
                           window.location.origin +
-                            "/checkout-success/index.html"
+                            "../checkout-success/index.html"
                         );
                       }
                     } else {
@@ -156,7 +156,7 @@ document
                           } else {
                             sessionStorage.setItem("customer", firstName.value);
                             window.location.href =
-                              "/checkout-success/index.html";
+                              "../checkout-success/index.html";
                           }
                         }
                       }
