@@ -156,7 +156,7 @@ document
                           } else {
                             sessionStorage.setItem("customer", firstName.value);
                             window.location.href =
-                              "../checkout-success/index.html";
+                              "../Checkout-success/index.html";
                           }
                         }
                       }
