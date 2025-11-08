@@ -28,7 +28,7 @@ export function cartFunctions() {
           );
         } else {
           window.location.href =
-            window.location.origin + "/PE1/Checkout.index.html";
+            window.location.origin + "/PE1/Checkout/index.html";
         }
       }
     });
