@@ -116,10 +116,7 @@ document
                         ).style.display = "block";
                       } else {
                         sessionStorage.setItem("customer", firstName.value);
-                        window.location.replace(
-                          window.location.origin +
-                            "../checkout-success/index.html"
-                        );
+                        window.location.href = "../checkout-success/index.html";
                       }
                     } else {
                       if (cardNumber.value == 0) {
