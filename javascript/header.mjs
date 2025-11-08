@@ -27,7 +27,7 @@ export function cartFunctions() {
             "Please add an item to your cart before proceeding to checkout."
           );
         } else {
-          window.location.href = "../Checkout/index.html";
+          window.location.href = "../checkout/index.html";
         }
       }
     });
